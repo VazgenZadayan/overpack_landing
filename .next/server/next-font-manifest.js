@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/gago/Desktop/overpack_web/src/app/[locale]/layout\":[\"static/media/875ae681bfde4580-s.p.woff2\",\"static/media/4c9affa5bc8f420e-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

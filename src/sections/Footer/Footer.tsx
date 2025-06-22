@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./Footer.module.scss";
-import MailIcon from "../../components/icons/MailIcon";
-import CallIcon from "../../components/icons/CallIcon";
+import { MdEmail, MdPhone } from "react-icons/md";
 
 const Footer: React.FC = () => (
   <footer className={styles.footer} id="partners">
@@ -24,15 +23,23 @@ const Footer: React.FC = () => (
         </div>
       </div>
       <div className={styles.footer__bottom}>
-        <div className={styles.footer__copyright}>© ООО &quot;OVER&quot; 2025</div>
+        <div style={{ flexDirection: 'column', alignItems: 'flex-start', display: 'flex', gap: '5px' }}>
+        <div className={styles.footer__copyright}>© OVERPACK 2025</div>
+        <div className={styles.footer__developed}>
+          Developed by 
+          <a href="https://am.linkedin.com/in/react-javascript-developer-frontend-engineer-nextjs-next-reactnative-typescript?trk=people-guest_people_search-card" target="_blank" rel="noopener noreferrer" className={styles.footer__devlink}>Gago</a>
+          &amp;
+          <a href="https://am.linkedin.com/in/vazgenzadayan/en" target="_blank" rel="noopener noreferrer" className={styles.footer__devlink}>Vazgen</a>
+        </div>
+        </div>
         <div className={styles.footer__contacts}>
           <div className={styles.footer__contactsBlock}>
-            <CallIcon />
-            <span className={styles.footer__contact}>+7 499 930 34 24</span>
+            <MdPhone size={24} color="#F03341" />
+            <a href="tel:+37441919694" className={styles.footer__contact}>+374 41 919694</a>
           </div>
           <div className={styles.footer__contactsBlock}>
-            <MailIcon />
-            <span className={styles.footer__contact}>overpack@hook.com</span>
+            <MdEmail size={24} color="#F03341" />
+            <a href="mailto:overpackhookahmarket@gmail.com" className={styles.footer__contact}>overpackhookahmarket@gmail.com</a>
           </div>
         </div>
       </div>

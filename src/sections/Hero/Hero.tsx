@@ -1,16 +1,10 @@
 import React, { useMemo } from "react";
 import "./Hero.scss";
-import DeliveryIcon from "@/components/icons/DeliveryIcon";
-import CheckIcon from "@/components/icons/CheckIcon";
-import CardIcon from "@/components/icons/CardIcon";
-import AppStoreIcon from "@/components/icons/AppStoreIcon";
-import GooglePlayIcon from "@/components/icons/GooglePlayIcon";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
-
-const GOOGLE_PLAY_URL = "https://play.google.com/store";
-const APP_STORE_URL = "https://www.apple.com/app-store/";
+import Image from "next/image";
+import { FaTruck, FaUserShield, FaCreditCard, FaBolt, FaBoxes, FaGooglePlay, FaAppStore } from "react-icons/fa";
 
 const Hero = () => {
   const pathname = usePathname();
@@ -23,38 +17,24 @@ const Hero = () => {
   };
 
   const featuresRepeatCount = 3;
-  const features = [
-    { icon: <DeliveryIcon width={30} height={30} />, text: "Удобная доставка" },
-    {
-      icon: <CheckIcon width={30} height={30} />,
-      text: "Официальные дистрибьюторы",
-    },
-    {
-      icon: <CardIcon width={30} height={30} />,
-      text: "Безопасная Оплата картой",
-    },
-    {
-      icon: <CheckIcon width={30} height={30} />,
-      text: "Быстрая обработка заказов",
-    },
-    {
-      icon: <CheckIcon width={30} height={30} />,
-      text: "Большой ассортимент товаров",
-    },
-  ];
 
-  const RenderFeatures = useMemo(
-    () =>
-      Array.from({ length: featuresRepeatCount }).flatMap((_, i) =>
-        features.map((feature, j) => (
-          <div className="features__block" key={i + "-" + j}>
-            {feature.icon}
-            <span className="features__text big-paragraph">{feature.text}</span>
-          </div>
-        )),
-      ),
-    [featuresRepeatCount],
-  );
+  const RenderFeatures = useMemo(() => {
+    const features = [
+      { icon: <FaTruck size={30} color="#fff" />, text: "Удобная доставка" },
+      { icon: <FaUserShield size={30} color="#fff" />, text: "Официальные дистрибьюторы" },
+      { icon: <FaCreditCard size={30} color="#fff" />, text: "Безопасная Оплата картой" },
+      { icon: <FaBolt size={30} color="#fff" />, text: "Быстрая обработка заказов" },
+      { icon: <FaBoxes size={30} color="#fff" />, text: "Большой ассортимент товаров" },
+    ];
+    return Array.from({ length: featuresRepeatCount }).flatMap((_, i) =>
+      features.map((feature, j) => (
+        <div className="features__block" key={i + "-" + j}>
+          {feature.icon}
+          <span className="features__text big-paragraph">{feature.text}</span>
+        </div>
+      ))
+    );
+  }, [featuresRepeatCount]);
 
   return (
     <section className="main-banner" id="main">
@@ -109,22 +89,14 @@ const Hero = () => {
         в Армении
       </span>
       <div className="appstore-buttons">
-        <a
-          href={GOOGLE_PLAY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="appstore-buttons__btn"
-        >
-          <GooglePlayIcon />
-        </a>
-        <a
-          href={APP_STORE_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="appstore-buttons__btn"
-        >
-          <AppStoreIcon />
-        </a>
+        <div className="appstore-buttons__btn">
+          <FaGooglePlay size={60} color="#fff" />
+          <span className="appstore-buttons__label">Available on Google Play</span>
+        </div>
+        <div className="appstore-buttons__btn">
+          <FaAppStore size={60} color="#fff" />
+          <span className="appstore-buttons__label">Available on App Store</span>
+        </div>
       </div>
       <section className="features">
         <div className="features__track">{RenderFeatures}</div>

@@ -72,8 +72,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin: 40px 0 0 0;
+  gap: 24px;
+  margin: 32px 0;
+
+  position: relative;
+
+  img, .appstore-buttons img, .appstore-buttons :global(img) {
+    width: 220px;
+    height: 60px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+  }
 
   &__btn {
     display: flex;
@@ -89,6 +101,26 @@
       transform: scale(1.04);
     }
   }
+}
+
+.appstore-buttons__btn svg {
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  display: block;
+  background: var(--primary-color, #222);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 8px;
+}
+
+.appstore-buttons__label {
+  margin-left: 16px;
+  font-size: 18px;
+  color: var(--dark-text);
+  font-weight: 700;
+  white-space: nowrap;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 
 .hero-header {

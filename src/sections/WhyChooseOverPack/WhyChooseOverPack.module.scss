@@ -17,10 +17,12 @@
   &__cards {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 30px;
     width: 100%;
     justify-content: center;
     align-items: stretch;
+    flex-wrap: wrap;
+    max-width: 1280px;
   }
 
   &__card {

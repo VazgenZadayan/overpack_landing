@@ -1,32 +1,31 @@
 import React from "react";
 import styles from "./IndustrySection.module.scss";
 import { ReactNode } from "react";
-import CashIcon from "../../components/icons/CashIcon";
-import MessageIcon from "../../components/icons/MessageIcon";
-import TimeIcon from "../../components/icons/TimeIcon";
-import PhoneIcon from "../../components/icons/PhoneIcon";
+import { FaTags, FaHeadset, FaShippingFast, FaMobileAlt } from "react-icons/fa";
 
 interface IndustryCard {
   text: string;
   icon: ReactNode;
 }
 
+const iconColor = "var(--primary-color)";
+
 const cards: IndustryCard[] = [
   {
-    text: "Специальные оптовые цены",
-    icon: <CashIcon />, // You can replace this with your SVG component
+    text: "Эксклюзивные оптовые цены!",
+    icon: <FaTags color={iconColor} />,
   },
   {
-    text: "Поддержĸа на всех этапах",
-    icon: <MessageIcon />, // You can replace this with your SVG component
+    text: "Персональная поддержка на каждом шаге!",
+    icon: <FaHeadset color={iconColor} />,
   },
   {
-    text: "Быстрая обработĸа и отгрузĸа заĸазов",
-    icon: <TimeIcon />, // You can replace this with your SVG component
+    text: "Быстрая обработка и отгрузка заказов!",
+    icon: <FaShippingFast color={iconColor} />,
   },
   {
-    text: "Удобное оформление заĸазов через приложение",
-    icon: <PhoneIcon />, // You can replace this with your SVG component
+    text: "Все товары для кальянной — в одном удобном приложении!",
+    icon: <FaMobileAlt color={iconColor} />,
   },
 ];
 
@@ -40,7 +39,7 @@ const IndustrySection: React.FC = () => (
       </div>
       <div className={styles.industry__bottom}>
         <div className={styles.industry__bottom_left}>
-        Мы ценим партнёрство и предлагаем выгодные условия для заведений и магазинов
+          <p>Работайте с нами — лучшие предложения для заведений и магазинов только у <span>OverPack!</span></p>
         </div>
         <div className={styles.industry__bottom_right}>
           {cards.map((card, idx) => (

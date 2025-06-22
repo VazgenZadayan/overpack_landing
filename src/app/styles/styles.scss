@@ -187,18 +187,25 @@ body {
 }
 
 .anchor-floating {
-  position: fixed;
-  right: max(calc((88vw - 1280px) / 2), 32px);
-  bottom: 50px;
-  z-index: 1000;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  background: var(--primary-color, #f03341);
   border-radius: 50%;
-  background: none;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 1000;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.anchor-floating:hover {
+  background: var(--primary-color-hover, #d62e3b);
+  transform: scale(1.08);
 }
 
 .fullpage-scroll-container {

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import AnchorIcon from "./icons/AnchorIcon";
+import { FaArrowUp } from "react-icons/fa";
 import "../app/styles/styles.scss";
 
 interface AnchorProps {
@@ -23,10 +23,9 @@ const Anchor: React.FC<AnchorProps> = ({ scrollContainerRef }) => {
   const handleClick = () => {
     scrollContainerRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
-
   return visible ? (
     <div className="anchor-floating" onClick={handleClick}>
-      <AnchorIcon />
+      <FaArrowUp size={32} color="#fff" />
     </div>
   ) : null;
 };

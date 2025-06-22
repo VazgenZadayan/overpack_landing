@@ -1,5 +1,5 @@
 import React from "react";
-import "../app/styles/styles.scss";
+import styles from "./WhyChooseOverPack.module.scss";
 
 const cards = [
   {
@@ -21,25 +21,23 @@ const cards = [
 ];
 
 const WhyChooseOverPack: React.FC = () => (
-  <section className="whychoose" id="advantages">
-    <div className="container">
-      <h2 className="whychoose__heading h2">Почему выбирают OverPack?</h2>
-      <div className="whychoose__cards">
-        {cards.map((card, idx) => (
-          <div className="whychoose__card" key={idx}>
-            <div className="whychoose__card-title h5">
-              {card.title.split(" ").map((word, i) => (
-                <span key={i} style={{ display: "block" }}>
-                  {word}
-                </span>
-              ))}
-            </div>
-            <div className="whychoose__card-text paragraph-mini">
-              {card.text}
-            </div>
+  <section className={styles.whychoose} id="advantages">
+    <h2 className={`${styles["whychoose__heading"]} h2`}>Почему выбирают OverPack?</h2>
+    <div className={styles.whychoose__cards}>
+      {cards.map((card, idx) => (
+        <div className={styles.whychoose__card} key={idx}>
+          <div className={`${styles["whychoose__card-title"]} h5`}>
+            {card.title.split(" ").map((word, i) => (
+              <span key={i} style={{ display: "block" }}>
+                {word}
+              </span>
+            ))}
           </div>
-        ))}
-      </div>
+          <div className={`${styles["whychoose__card-text"]} paragraph-mini`}>
+            {card.text}
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 );

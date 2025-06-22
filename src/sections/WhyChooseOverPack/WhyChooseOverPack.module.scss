@@ -1,0 +1,47 @@
+.whychoose {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__heading {
+    width: 100%;
+    color: var(--dark-text);
+    text-align: center;
+    margin-bottom: 80px;
+    font-size: var(--h2-size);
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  &__card {
+    background: var(--gray-1);
+    border-radius: 20px;
+    padding: 20px 19px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 295px;
+    align-items: stretch;
+    box-sizing: border-box;
+  }
+
+  &__card-title {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+  }
+
+  &__card-text {
+    color: var(--dark-text);
+    margin-top: 0;
+  }
+} 

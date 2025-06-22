@@ -1,18 +1,18 @@
 // Responsive breakpoints
 @mixin phone {
-  @media (min-width: $breakpoint-phone) {
+  @media (min-width: 320px) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (min-width: $breakpoint-tablet) {
+  @media (min-width: 768px) {
     @content;
   }
 }
 
 @mixin laptop {
-  @media (min-width: $breakpoint-laptop) {
+  @media (min-width: 1024px) {
     @content;
   }
 }
@@ -80,5 +80,101 @@
     -webkit-line-clamp: $lines;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+}
+
+@mixin h1 {
+  font-size: var(--phone-h1-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.1;
+
+  @include tablet {
+    font-size: var(--tab-h1-size);
+  }
+
+  @include laptop {
+    font-size: var(--h1-size);
+  }
+}
+
+@mixin h2 {
+  font-size: var(--h2-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.2;
+
+  @include tablet {
+    font-size: var(--tab-h2-size);
+  }
+
+  @include phone {
+    font-size: var(--phone-h3-size);
+  }
+}
+
+@mixin h3 {
+  font-size: var(--phone-h3-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.2;
+
+  @include tablet {
+    font-size: var(--tab-h3-size);
+  }
+
+  @include laptop {
+    font-size: var(--h3-size);
+  }
+}
+
+@mixin h4 {
+  font-size: var(--phone-h4-size);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+
+  @include tablet {
+    font-size: var(--tab-h4-size);
+  }
+
+  @include laptop {
+    font-size: var(--h4-size);
+  }
+}
+
+@mixin h5 {
+  font-size: var(--phone-big-paragraph-size);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.4;
+
+  @include laptop {
+    font-size: var(--h5-size);
+  }
+}
+
+@mixin big-paragraph {
+  font-size: var(--big-paragraph-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+
+  @include phone {
+    font-size: var(--phone-big-paragraph-size);
+  }
+}
+
+@mixin med-paragraph {
+  font-size: var(--phone-big-paragraph-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+
+  @include laptop {
+    font-size: var(--med-paragraph-size);
+  }
+}
+
+@mixin paragraph-mini {
+  font-size: var(--paragraph-mini-size);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+
+  @include phone {
+    font-size: var(--phone-big-paragraph-size);
   }
 }

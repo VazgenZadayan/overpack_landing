@@ -3,6 +3,7 @@
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
+import "./LanguageSwitcher.scss";
 
 const languages = [
   { code: "en", name: "ENG" },

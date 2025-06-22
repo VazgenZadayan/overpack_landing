@@ -1,0 +1,109 @@
+.footer {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 100px;
+  padding-bottom: 20px;
+  background: var(--gray-1);
+
+  &__heading {
+    color: var(--dark-text);
+    font-size: var(--h3-size);
+    font-weight: var(--font-weight-extrabold);
+    text-align: left;
+    max-width: 1280px;
+  }
+
+  &__section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1280px;
+  }
+
+  &__leftBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    padding-top: 40px;
+    max-width: 40%;
+  }
+
+  &__rightBlock {
+    background: var(--white-text);
+    border-radius: 20px;
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex: 1;
+    max-width: 50%;
+  }
+
+  &__cooperationText {
+    color: var(--dark-text);
+    font-size: var(--big-paragraph-size);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__rightText {
+    color: var(--dark-text);
+    font-size: var(--big-paragraph-size);
+    font-weight: var(--font-weight-semibold);
+    text-align: left;
+  }
+
+  &__contactBtn {
+    background: var(--primary-color);
+    color: var(--white-text);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 73px;
+    font-size: 20px;
+    font-weight: var(--font-weight-semibold);
+    margin-top: auto;
+    align-self: flex-start;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 0;
+    &:hover {
+      background: var(--primary-color-hover);
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 1280px;
+  }
+
+  &__copyright {
+    color: var(--dark-text);
+  }
+
+  &__contacts {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__contactsBlock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__contact {
+    color: var(--dark-text);
+    font-size: 18px;
+  }
+} 

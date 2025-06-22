@@ -2,7 +2,7 @@ import { Manrope } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import "../styles/styles.scss";
-import FullPageScroller from "@/components/FullPageScroller";
+import FullPageScroller from "@/pages/MainPage";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],

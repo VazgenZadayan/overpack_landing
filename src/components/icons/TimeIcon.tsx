@@ -20,44 +20,44 @@ const TimeIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
     <path
       d="M16 4C8.26934 4 2.00001 10.2627 2.00001 17.9933C1.99552 21.4141 3.24825 24.7172 5.52001 27.2747C5.58668 27.3493 5.65068 27.4253 5.72001 27.4933C5.86797 27.6531 6.04741 27.7804 6.24703 27.8673C6.44665 27.9542 6.66212 27.9989 6.87985 27.9984C7.09757 27.9979 7.31283 27.9523 7.51205 27.8644C7.71127 27.7766 7.89013 27.6484 8.03734 27.488C9.05074 26.3865 10.2816 25.5073 11.6522 24.9058C13.0228 24.3044 14.5033 23.9939 16 23.9939C17.4968 23.9939 18.9772 24.3044 20.3478 24.9058C21.7184 25.5073 22.9493 26.3865 23.9627 27.488C24.1097 27.649 24.2886 27.7777 24.4879 27.8659C24.6873 27.9541 24.9028 27.9999 25.1208 28.0004C25.3388 28.0009 25.5546 27.9561 25.7544 27.8688C25.9541 27.7815 26.1336 27.6536 26.2813 27.4933L26.4813 27.2747C28.7524 24.7174 30.0047 21.4148 30 17.9947C30 10.26 23.7307 4 16 4Z"
       stroke="#F03341"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M16 8V10"
       stroke="#F03341"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M26 18H24"
       stroke="#F03341"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M8 18H6"
       stroke="#F03341"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M10.344 12.3413L8.93066 10.928"
       stroke="#F03341"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M21.656 12.3413L23.0707 10.928"
       stroke="#F03341"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

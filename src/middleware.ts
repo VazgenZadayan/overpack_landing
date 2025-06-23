@@ -28,6 +28,7 @@ export function middleware(request: NextRequest) {
   if (
     [
       '/phone.png',
+      '/robots.txt'
     ].includes(pathname)
   )
     return

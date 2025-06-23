@@ -1,3 +1,6 @@
+@import '../../styles/_variables.module.scss';
+@import '../../styles/_typography.module.scss';
+
 .whychoose {
   min-height: 100vh;
   width: 100%;
@@ -7,17 +10,17 @@
   justify-content: center;
 
   &__heading {
+    @include h2;
     width: 100%;
-    color: var(--dark-text);
+    color: $black;
     text-align: center;
     margin-bottom: 80px;
-    font-size: 400px;
   }
 
   &__cards {
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 50px;
     width: 100%;
     justify-content: center;
     align-items: stretch;
@@ -26,24 +29,28 @@
   }
 
   &__card {
-    background: var(--gray-1);
+    background: $gray-bg;
     border-radius: 20px;
     padding: 20px 19px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 295px;
+    max-width: 320px;
+    height: auto;
     align-items: stretch;
     box-sizing: border-box;
   }
 
   &__card-title {
-    color: var(--primary-color);
+    @include h5;
+    color: $red-main;
     margin-bottom: 10px;
   }
 
   &__card-text {
-    color: var(--dark-text);
+    @include paragraphMini;
+    color: $black;
     margin-top: 0;
+    line-height: 30px;
   }
 } 

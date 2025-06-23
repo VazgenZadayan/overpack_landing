@@ -6,7 +6,6 @@ import IndustrySection from "@/sections/IndustrySection/IndustrySection";
 import ApplicationPreview from "../sections/ApplicationPreview/ApplicationPreview";
 import Footer from "../sections/Footer/Footer";
 import Anchor from "../components/Anchor";
-import "../app/[lang]/styles/styles.scss";
 
 const MainPage: React.FC<{ dictionary: any }> = ({ dictionary }) => {
   const containerRef = useRef<HTMLDivElement>(null);

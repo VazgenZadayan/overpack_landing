@@ -1,5 +1,5 @@
-@import "../../styles/_variables";
-@import "../../styles/_mixins";
+@import '../../styles/_variables.module.scss';
+@import '../../styles/_typography.module.scss';
 
 .main-banner {
   min-height: 100vh;
@@ -8,14 +8,13 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 18px;
   width: 100%;
   padding: 30px 0;
 }
 
 .main-banner__title {
   @include h1;
-  color: var(--primary-color);
+  color: $red-main;
   margin: 0;
 }
 
@@ -23,20 +22,21 @@
   @include h3;
   margin: 0;
   &--dark {
-    color: var(--dark-text);
+    color: $black;
   }
   &--pink {
-    color: var(--pink-color);
+    color: $red-main;
   }
 }
 
 .features {
   width: 100vw;
   overflow: hidden;
-  background: var(--primary-color);
+  background: $red-main;
   margin: 0;
   padding: 0;
   position: relative;
+  min-height: 20px;
 }
 
 .features__track {
@@ -65,7 +65,8 @@
 }
 
 .features__text {
-  color: var(--white-text);
+  @include paragraphMini;
+  color: $white;
 }
 
 .appstore-buttons {
@@ -73,19 +74,7 @@
   justify-content: center;
   align-items: center;
   gap: 24px;
-  margin: 32px 0;
-
   position: relative;
-
-  img, .appstore-buttons img, .appstore-buttons :global(img) {
-    width: 220px;
-    height: 60px;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    object-fit: contain;
-    position: relative;
-    z-index: 1;
-  }
 
   &__btn {
     position: relative;
@@ -99,27 +88,22 @@
     z-index: 1;
     background: none;
     transition: box-shadow 0.3s, transform 0.1s;
-
-    // Градиентный анимированный фон через ::before
     &::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 0;
       border-radius: 12px;
-      background: linear-gradient(270deg, #fdebec, #f03341, #fdebec, #f03341);
+      background: linear-gradient(270deg, $red-bg, $red-main, $red-bg, $red-main);
       background-size: 400% 400%;
       animation: gradientBG 5s ease infinite;
       opacity: 0.92;
       transition: opacity 0.3s;
     }
-
     &:hover {
       transform: scale(1.04);
       box-shadow: 0 4px 24px rgba(238, 9, 121, 0.3);
     }
-
-    // Контент поверх градиента
     > * {
       position: relative;
       z-index: 1;
@@ -128,21 +112,15 @@
 }
 
 @keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .appstore-buttons__btn svg {
   width: 44px;
   height: 44px;
-  color: #fff;
+  color: $white;
   display: block;
   background: transparent;
   border-radius: 8px;
@@ -153,7 +131,7 @@
 .appstore-buttons__label {
   margin-left: 10px;
   font-size: 16px;
-  color: #fff;
+  color: $white;
   font-weight: 700;
   white-space: nowrap;
   text-shadow: 0 1px 8px rgba(0,0,0,0.18);
@@ -164,19 +142,18 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  // margin: 44px auto 0 auto;
   padding: 20px;
   max-width: 1280px;
   width: 100%;
-  background: var(--secondary-color);
+  background: $red-bg;
   border-radius: 20px;
   box-sizing: border-box;
 }
 
 .hero-logo {
   font-size: 28px;
-  font-weight: var(--font-weight-extrabold);
-  color: var(--primary-color);
+  font-weight: 800;
+  color: $red-main;
   text-decoration: none;
 }
 
@@ -187,22 +164,20 @@
 }
 
 .hero-nav__item {
-  font-size: 17px;
-  font-weight: var(--font-weight-medium);
-  color: var(--dark-text);
+  @include paragraphMini;
+  color: $black;
   background: none;
   border: none;
   cursor: pointer;
   transition: color 0.3s;
   padding: 0;
-
   &:hover,
   &.active {
-    color: var(--primary-color);
+    color: $red-main;
   }
 }
 
 .hero-lang {
   margin-left: 24px;
   position: relative;
-}
+} 

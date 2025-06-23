@@ -1,5 +1,6 @@
 import { i18n, type Locale } from "../../i18n-config";
 import { getDictionary } from "../../get-dictionary";
+import '../../styles/global.scss';
 
 export async function generateMetadata({ params }: { params: { lang: Locale } }) {
   const dictionary = await getDictionary(params.lang);

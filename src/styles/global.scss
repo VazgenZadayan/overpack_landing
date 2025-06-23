@@ -1,0 +1,18 @@
+@import './reset.scss';
+@import './_variables.module.scss';
+@import './_typography.module.scss';
+
+body {
+  background: $white-bg;
+  color: $black;
+}
+
+h1 { @include h1; }
+h2 { @include h2; }
+h3 { @include h3; }
+h4 { @include h4; }
+h5 { @include h5; }
+
+.bigParagraphSB { @include bigParagraphSB; }
+.medParagraph { @include medParagraph; }
+.paragraphMini { @include paragraphMini; } 

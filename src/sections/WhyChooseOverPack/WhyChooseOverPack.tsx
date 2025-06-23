@@ -69,20 +69,20 @@ const WhyChooseOverPack: React.FC<WhyChooseOverPackProps> = ({ dictionary }) => 
 
   return (
     <section className={styles.whychoose} id="advantages" ref={sectionRef}>
-      <h2 className={`${styles["whychoose__heading"]} h2`} ref={headingRef}>
+      <h2 className={styles["whychoose__heading"]} ref={headingRef}>
         {dictionary.whyChoose.title}
       </h2>
       <div className={styles.whychoose__cards} ref={cardsContainerRef}>
         {dictionary.whyChoose.cards.map((card: any, idx: number) => (
           <div className={styles.whychoose__card} key={idx}>
-            <div className={`${styles["whychoose__card-title"]} h5`}>
+            <div className={styles["whychoose__card-title"]}>
               {card.title.split(" ").map((word: string, i: number) => (
                 <span key={i} style={{ display: "block" }}>
                   {word}
                 </span>
               ))}
             </div>
-            <div className={`${styles["whychoose__card-text"]} paragraph-mini`}>
+            <div className={styles["whychoose__card-text"]}>
               {card.text}
             </div>
           </div>

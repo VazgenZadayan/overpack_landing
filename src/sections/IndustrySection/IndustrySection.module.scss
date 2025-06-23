@@ -1,7 +1,10 @@
+@import '../../styles/_variables.module.scss';
+@import '../../styles/_typography.module.scss';
+
 .industry {
   min-height: 100vh;
   width: 100%;
-  background: var(--gray-1);
+  background: $gray-bg;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -9,15 +12,15 @@
   gap: 60px;
 
   &__heading {
-    color: var(--dark-text);
-    font-size: var(--h2-size);
+    @include h2;
+    color: $black;
     text-align: center;
     width: 100%;
     max-width: 1280px;
   }
 
   &__special {
-    background: var(--primary-color);
+    background: $red-main;
     border-radius: 20px;
     padding: 20px 150px;
     display: flex;
@@ -28,15 +31,15 @@
   }
 
   &__special-text {
-    color: var(--white-text);
-    font-size: var(--h4-size);
+    @include h4;
+    color: $white;
     text-align: center;
     width: 100%;
   }
 
   &__bottom {
     width: 100%;
-    background: var(--white-text);
+    background: $white;
     border-radius: 20px;
     padding: 50px 30px;
     display: flex;
@@ -47,11 +50,12 @@
 
   &__bottom_left {
     flex: 1;
-    color: var(--dark-text);
-    font-size: var(--med-paragraph-size);
+    color: $black;
+    @include medParagraph;
     display: flex;
     align-items: center;
     max-width: 35%;
+    line-height: 30px;
   }
 
   &__bottom_right {
@@ -63,7 +67,7 @@
   }
 
   &__card {
-    background: var(--secondary-color);
+    background: $red-bg;
     border-radius: 20px;
     padding: 10px;
     display: flex;
@@ -81,8 +85,8 @@
   }
 
   &__card-text {
-    color: var(--dark-text);
-    font-size: var(--med-paragraph-size);
+    @include medParagraph;
+    color: $black;
     text-align: left;
   }
 } 

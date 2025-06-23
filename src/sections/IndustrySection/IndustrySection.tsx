@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import styles from "./IndustrySection.module.scss";
-import { ReactNode } from "react";
 import { FaTags, FaHeadset, FaShippingFast, FaMobileAlt } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,7 +8,7 @@ interface IndustrySectionProps {
   dictionary: any;
 }
 
-const iconColor = "var(--primary-color)";
+const iconColor = "#F03341";
 
 const IndustrySection: React.FC<IndustrySectionProps> = ({ dictionary }) => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -119,9 +118,9 @@ const IndustrySection: React.FC<IndustrySectionProps> = ({ dictionary }) => {
 
   return (
     <section className={styles.industry} id="business" ref={sectionRef}>
-        <h2 className={`${styles["industry__heading"]} h2`} ref={headingRef}>{dictionary.industry.title}</h2>
+        <h2 className={styles["industry__heading"]} ref={headingRef}>{dictionary.industry.title}</h2>
         <div className={styles.industry__special}>
-          <span className={`${styles["industry__special-text"]} h4`} ref={specialRef}>
+          <span className={styles["industry__special-text"]} ref={specialRef}>
             {dictionary.industry.special}
           </span>
         </div>
@@ -133,7 +132,7 @@ const IndustrySection: React.FC<IndustrySectionProps> = ({ dictionary }) => {
             {dictionary.industry.cards.map((text: string, idx: number) => (
               <div className={styles.industry__card} key={idx}>
                 <div className={styles.industry__card_icon}>{icons[idx]}</div>
-                <span className={`${styles["industry__card-text"]} med-paragraph`}>
+                <span className={styles["industry__card-text"]}>
                   {text}
                 </span>
               </div>

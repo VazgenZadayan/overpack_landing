@@ -1,0 +1,84 @@
+@import '../../styles/_variables.module.scss';
+
+.languageSwitcher {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .languageSwitcher__button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: $white;
+    border: 0.5px solid $gray-bg;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: $black;
+    cursor: pointer;
+    transition:
+      border 0.2s,
+      box-shadow 0.2s,
+      color 0.2s;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    outline: none;
+  
+    &:hover,
+    &:focus {
+      box-shadow: 0 2px 8px rgba(240, 51, 65, 0.08);
+      color: $red-main;
+    }
+  }
+  
+  .languageSwitcher__button svg {
+    transition: color 0.2s, fill 0.2s;
+  }
+  
+  .languageSwitcher__dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: -70%;
+    background: $white;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    padding: 6px;
+    z-index: 10;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    transform: translate(-50%, 0);
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+    width: fit-content;
+  }
+  
+  .languageSwitcher__option {
+    width: 100%;
+    padding: 5px 10px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 15px;
+    color: $black;
+    cursor: pointer;
+    border-radius: 6px;
+    text-decoration: none;
+    transition:
+      background 0.18s,
+      color 0.18s;
+  
+    &:hover {
+      background: $gray-bg;
+      color: $red-main;
+    }
+  
+    &.active {
+      background: $red-main;
+      color: $white;
+    }
+  }
+  

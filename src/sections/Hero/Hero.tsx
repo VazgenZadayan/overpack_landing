@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, useEffect } from "react";
-import "./Hero.scss";
+import styles from './Hero.module.scss';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
@@ -32,17 +32,17 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
 
   const RenderFeatures = useMemo(() => {
     const icons = [
-      <FaTruck size={30} color="#fff" key="truck" />, 
-      <FaUserShield size={30} color="#fff" key="shield" />, 
-      <FaCreditCard size={30} color="#fff" key="card" />, 
-      <FaBolt size={30} color="#fff" key="bolt" />, 
-      <FaBoxes size={30} color="#fff" key="boxes" />
+      <FaTruck size={24} color="#fff" key="truck" />, 
+      <FaUserShield size={24} color="#fff" key="shield" />, 
+      <FaCreditCard size={24} color="#fff" key="card" />, 
+      <FaBolt size={24} color="#fff" key="bolt" />, 
+      <FaBoxes size={24} color="#fff" key="boxes" />
     ];
     return Array.from({ length: featuresRepeatCount }).flatMap((_, i) =>
       dictionary.hero.features.map((text: string, j: number) => (
-        <div className="features__block" key={i + "-" + j}>
+        <div className={styles['features__block']} key={i + "-" + j}>
           {icons[j]}
-          <span className="features__text big-paragraph">{text}</span>
+          <span className={styles['features__text']}>{text}</span>
         </div>
       ))
     );
@@ -91,7 +91,7 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
     // Анимация features__block
     if (featuresTrackRef.current) {
       const blocks = gsap.utils.toArray<HTMLElement>(
-        featuresTrackRef.current.querySelectorAll('.features__block')
+        featuresTrackRef.current.querySelectorAll(`.${styles['features__block']}`)
       );
       gsap.fromTo(
         blocks,
@@ -109,79 +109,79 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
   }, []);
 
   return (
-    <section className="main-banner" id="main">
-      <header className="hero-header" ref={headerRef}>
-        <Link href="/" className="hero-logo">
-          {dictionary.hero.main}
+    <section className={styles['main-banner']} id="main">
+      <header className={styles['hero-header']} ref={headerRef}>
+        <Link href="/" className={styles['hero-logo']}>
+          <span className={styles['paragraphMini']}>{dictionary.hero.main}</span>
         </Link>
-        <nav className="hero-nav">
+        <nav className={styles['hero-nav']}>
           <button
             onClick={() => scrollToSection("main")}
-            className={`hero-nav__item ${pathname === "/" ? "active" : ""}`}
+            className={`${styles['hero-nav__item']} ${pathname === "/" ? styles['active'] : ""}`}
           >
-            {dictionary.hero.nav.main}
+            <span className={styles['paragraphMini']}>{dictionary.hero.nav.main}</span>
           </button>
           <button
             onClick={() => scrollToSection("advantages")}
-            className={`hero-nav__item ${pathname === "/advantages" ? "active" : ""}`}
+            className={`${styles['hero-nav__item']} ${pathname === "/advantages" ? styles['active'] : ""}`}
           >
-            {dictionary.hero.nav.advantages}
+            <span className={styles['paragraphMini']}>{dictionary.hero.nav.advantages}</span>
           </button>
           <button
             onClick={() => scrollToSection("business")}
-            className={`hero-nav__item ${pathname === "/business" ? "active" : ""}`}
+            className={`${styles['hero-nav__item']} ${pathname === "/business" ? styles['active'] : ""}`}
           >
-            {dictionary.hero.nav.business}
+            <span className={styles['paragraphMini']}>{dictionary.hero.nav.business}</span>
           </button>
           <button
             onClick={() => scrollToSection("about")}
-            className={`hero-nav__item ${pathname === "/about" ? "active" : ""}`}
+            className={`${styles['hero-nav__item']} ${pathname === "/about" ? styles['active'] : ""}`}
           >
-            {dictionary.hero.nav.about}
+            <span className={styles['paragraphMini']}>{dictionary.hero.nav.about}</span>
           </button>
           <button
             onClick={() => scrollToSection("partners")}
-            className={`hero-nav__item ${pathname === "/partners" ? "active" : ""}`}
+            className={`${styles['hero-nav__item']} ${pathname === "/partners" ? styles['active'] : ""}`}
           >
-            {dictionary.hero.nav.partners}
+            <span className={styles['paragraphMini']}>{dictionary.hero.nav.partners}</span>
           </button>
-          <div className="hero-lang">
+          <div className={styles['hero-lang']}>
             <LanguageSwitcher />
           </div>
         </nav>
       </header>
-      <h1 className="main-banner__title" ref={titleRef}>{dictionary.hero.main}</h1>
+      <h1 className={styles['main-banner__title']} ref={titleRef}>{dictionary.hero.main}</h1>
       <span
-        className="main-banner__subtitle main-banner__subtitle--dark"
+        className={`${styles['main-banner__subtitle']} ${styles['main-banner__subtitle--dark']}`}
         ref={el => { subtitleRefs.current[0] = el; }}
       >
         {dictionary.hero.subtitle1}
       </span>
       <span
-        className="main-banner__subtitle main-banner__subtitle--pink"
+        className={`${styles['main-banner__subtitle']} ${styles['main-banner__subtitle--pink']}`}
         ref={el => { subtitleRefs.current[1] = el; }}
       >
         {dictionary.hero.subtitle2}
       </span>
       <span
-        className="main-banner__subtitle main-banner__subtitle--dark"
+        className={`${styles['main-banner__subtitle']} ${styles['main-banner__subtitle--dark']}`}
         ref={el => { subtitleRefs.current[2] = el; }}
       >
         {dictionary.hero.subtitle3}
       </span>
-      <div className="appstore-buttons">
-        <div className="appstore-buttons__btn" ref={googlePlayBtnRef}>
+      <div className={styles['appstore-buttons']}>
+        <div className={styles['appstore-buttons__btn']} ref={googlePlayBtnRef}>
           <FaGooglePlay size={60} color="#fff" />
-          <span className="appstore-buttons__label">{dictionary.hero.googlePlay}</span>
+          <span className={styles['appstore-buttons__label']}>{dictionary.hero.googlePlay}</span>
         </div>
-        <div className="appstore-buttons__btn" ref={appStoreBtnRef}>
+        <div className={styles['appstore-buttons__btn']} ref={appStoreBtnRef}>
           <FaAppStore size={60} color="#fff" />
-          <span className="appstore-buttons__label">{dictionary.hero.appStore}</span>
+          <span className={styles['appstore-buttons__label']}>{dictionary.hero.appStore}</span>
         </div>
       </div>
-      <section className="features">
-        <div className="features__track" ref={featuresTrackRef}>{RenderFeatures}</div>
-      </section>
+      <div className={styles['features']}>
+        <div className={styles['features__track']} ref={featuresTrackRef}>{RenderFeatures}</div>
+      </div>
     </section>
   );
 };

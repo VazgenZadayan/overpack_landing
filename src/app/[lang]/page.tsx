@@ -1,7 +1,5 @@
-import { NextIntlClientProvider } from "next-intl";
 import { getDictionary } from "../../get-dictionary";
 import { Locale } from "../../i18n-config";
-import { Manrope } from "next/font/google";
 import MainPage from "@/pages/MainPage";
 
 export default async function IndexPage(props: {

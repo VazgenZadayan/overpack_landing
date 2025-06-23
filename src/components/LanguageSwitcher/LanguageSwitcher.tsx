@@ -1,12 +1,11 @@
 "use client";
 
-import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import "./LanguageSwitcher.scss";
-import { LanguageIcon } from "@heroicons/react/24/outline";
+import { GlobeAltIcon } from "@heroicons/react/24/outline";
 import { i18n, Locale } from "@/i18n-config";
 import Link from "next/link";
+import styles from "./LanguageSwitcher.module.scss";
 
 export default function LanguageSwitcher() {
   const pathname = usePathname();
@@ -35,22 +34,23 @@ export default function LanguageSwitcher() {
   }, []);
 
   return (
-    <div className="language-switcher" ref={dropdownRef}>
+    <div className={styles.languageSwitcher} ref={dropdownRef}>
       <button
-        className="language-switcher__button"
+        className={styles.languageSwitcher__button}
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        <LanguageIcon style={{ width: 20, height: 20, verticalAlign: 'middle' }} />
+        <GlobeAltIcon style={{ width: 20, height: 20, verticalAlign: 'middle' }} />
       </button>
       {isOpen && (
-        <div className="language-switcher__dropdown">
+        <div className={styles.languageSwitcher__dropdown}>
           {i18n.locales.map((language) => (
             <Link
               key={language}
-              className={`language-switcher__option ${
-                language === pathname?.replaceAll('/', '') ? "active" : ""
-              }`}
+              className={
+                styles.languageSwitcher__option +
+                (language === pathname?.replaceAll('/', '') ? ' ' + styles.active : '')
+              }
               onClick={() => setIsOpen(false)}
               href={redirectedPathname(language)}
             >

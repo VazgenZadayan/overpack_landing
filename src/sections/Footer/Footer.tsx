@@ -127,18 +127,18 @@ const Footer: React.FC<FooterProps> = ({ dictionary }) => {
 
   return (
     <footer className={styles.footer} id="partners" ref={sectionRef}>
-        <h3 className={`${styles.footer__heading} h3`} ref={headingRef}>
+        <h2 className={styles.footer__heading} ref={headingRef}>
           {dictionary.footer.title}
-        </h3>
+        </h2>
         <div className={styles.footer__section}>
           <div className={styles.footer__leftBlock} ref={leftBlockRef}>
-            <div className={`${styles.footer__cooperationText} big-paragraph sb`}>
+            <div className={styles.footer__cooperationText}>
               {dictionary.footer.cooperation}
             </div>
             <button className={styles.footer__contactBtn} ref={btnRef}>{dictionary.footer.contact}</button>
           </div>
           <div className={styles.footer__rightBlock} ref={rightBlockRef}>
-            <div className={`${styles.footer__rightText} big-paragraph sb`}>
+            <div className={styles.footer__rightText}>
               {dictionary.footer.desc}
             </div>
           </div>

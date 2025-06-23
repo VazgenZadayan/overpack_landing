@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
-import "../app/styles/styles.scss";
+import "../app/[lang]/styles/styles.scss";
 
 interface AnchorProps {
   scrollContainerRef: React.RefObject<HTMLDivElement>;

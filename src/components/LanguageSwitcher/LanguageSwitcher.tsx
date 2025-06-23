@@ -5,31 +5,21 @@ import { useRouter, usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import "./LanguageSwitcher.scss";
 import { LanguageIcon } from "@heroicons/react/24/outline";
-
-const languages = [
-  { code: "en", name: "ENG" },
-  { code: "ru", name: "РУС" },
-  { code: "hy", name: "ՀԱՅ" },
-];
+import { i18n, Locale } from "@/i18n-config";
+import Link from "next/link";
 
 export default function LanguageSwitcher() {
-  const locale = useLocale();
-  const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const currentLanguage =
-    languages.find((lang) => lang.code === locale) || languages[0];
-
-  const handleLanguageChange = (newLocale: string) => {
-    if (!pathname) return;
-    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPath);
-    setIsOpen(false);
+  const redirectedPathname = (locale: Locale) => {
+    if (!pathname) return "/";
+    const segments = pathname.split("/");
+    segments[1] = locale;
+    return segments.join("/");
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -55,16 +45,17 @@ export default function LanguageSwitcher() {
       </button>
       {isOpen && (
         <div className="language-switcher__dropdown">
-          {languages.map((language) => (
-            <button
-              key={language.code}
+          {i18n.locales.map((language) => (
+            <Link
+              key={language}
               className={`language-switcher__option ${
-                language.code === locale ? "active" : ""
+                language === 'en' ? "active" : ""
               }`}
-              onClick={() => handleLanguageChange(language.code)}
+              onClick={() => setIsOpen(false)}
+              href={redirectedPathname(language)}
             >
-              {language.name}
-            </button>
+              {language.toUpperCase()}
+            </Link>
           ))}
         </div>
       )}

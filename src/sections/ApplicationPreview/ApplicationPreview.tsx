@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import styles from "./ApplicationPreview.module.scss";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 const lines = [
   "Современное и",
@@ -12,7 +13,7 @@ const lines = [
 
 const ApplicationPreview: React.FC = () => {
   const linesRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const phoneRef = useRef<HTMLImageElement>(null);
+  const phoneRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -81,13 +82,15 @@ const ApplicationPreview: React.FC = () => {
             </span>
           </div>
           <div className={styles.screenSection__right}>
-            <img
-              src="/phone-bg.png"
-              alt="Phone"
-              className={styles.screenSection__phoneImg}
-              ref={phoneRef}
-              style={{ opacity: 0 }}
-            />
+            <div ref={phoneRef}>
+              <Image
+                src="/phone-bg.png"
+                width={200}
+                height={400}
+                alt="Phone"
+                className={styles.screenSection__phoneImg}
+              />
+            </div>
           </div>
         </div>
       </div>

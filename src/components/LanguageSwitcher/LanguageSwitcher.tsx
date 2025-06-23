@@ -4,6 +4,7 @@ import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import "./LanguageSwitcher.scss";
+import { LanguageIcon } from "@heroicons/react/24/outline";
 
 const languages = [
   { code: "en", name: "ENG" },
@@ -22,6 +23,7 @@ export default function LanguageSwitcher() {
     languages.find((lang) => lang.code === locale) || languages[0];
 
   const handleLanguageChange = (newLocale: string) => {
+    if (!pathname) return;
     const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
     router.push(newPath);
     setIsOpen(false);
@@ -49,7 +51,7 @@ export default function LanguageSwitcher() {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
       >
-        {currentLanguage.name}
+        <LanguageIcon style={{ width: 20, height: 20, verticalAlign: 'middle' }} />
       </button>
       {isOpen && (
         <div className="language-switcher__dropdown">

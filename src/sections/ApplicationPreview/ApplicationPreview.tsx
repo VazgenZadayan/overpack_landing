@@ -4,14 +4,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 
-const lines = [
-  "Современное и",
-  "простое в",
-  "использовании",
-  "приложение",
-];
+interface ApplicationPreviewProps {
+  dictionary: any;
+}
 
-const ApplicationPreview: React.FC = () => {
+const ApplicationPreview: React.FC<ApplicationPreviewProps> = ({ dictionary }) => {
   const linesRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const phoneRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -70,7 +67,7 @@ const ApplicationPreview: React.FC = () => {
         <div className={styles.screenSection__content}>
           <div className={styles.screenSection__left}>
             <span className={`${styles.screenSection__text} h3`}>
-              {lines.map((line, i) => (
+              {dictionary.applicationPreview.lines.map((line: string, i: number) => (
                 <span
                   key={i}
                   ref={el => { linesRefs.current[i] = el; }}
@@ -87,7 +84,7 @@ const ApplicationPreview: React.FC = () => {
                 src="/phone-bg.png"
                 width={200}
                 height={400}
-                alt="Phone"
+                alt={dictionary.applicationPreview.alt}
                 className={styles.screenSection__phoneImg}
               />
             </div>

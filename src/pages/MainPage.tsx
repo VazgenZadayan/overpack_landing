@@ -4,11 +4,11 @@ import Hero from "@/sections/Hero/Hero";
 import WhyChooseOverPack from "../sections/WhyChooseOverPack/WhyChooseOverPack";
 import IndustrySection from "@/sections/IndustrySection/IndustrySection";
 import ApplicationPreview from "../sections/ApplicationPreview/ApplicationPreview";
-import Footer from "@/sections/Footer/Footer";
+import Footer from "../sections/Footer/Footer";
 import Anchor from "../components/Anchor";
 import "../app/[lang]/styles/styles.scss";
 
-const MainPage: React.FC = () => {
+const MainPage: React.FC<{ dictionary: any }> = ({ dictionary }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isScrollingRef = useRef(false);
   const currentPageRef = useRef(0);
@@ -87,19 +87,19 @@ const MainPage: React.FC = () => {
       }}
     >
       <div className="fullpage-scroll-page">
-        <Hero />
+        <Hero dictionary={dictionary} />
       </div>
       <div className="fullpage-scroll-page">
-        <WhyChooseOverPack />
+        <WhyChooseOverPack dictionary={dictionary} />
       </div>
       <div className="fullpage-scroll-page">
-        <ApplicationPreview />
+        <ApplicationPreview dictionary={dictionary} />
       </div>
       <div className="fullpage-scroll-page">
-        <IndustrySection />
+        <IndustrySection dictionary={dictionary} />
       </div>
       <div className="fullpage-scroll-page">
-        <Footer />
+        <Footer dictionary={dictionary} />
       </div>
       <Anchor scrollContainerRef={containerRef} />
     </div>

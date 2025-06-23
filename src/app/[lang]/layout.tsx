@@ -1,9 +1,13 @@
 import { i18n, type Locale } from "../../i18n-config";
+import { getDictionary } from "../../get-dictionary";
 
-export const metadata = {
-  title: "Overpack | Hookah Market",
-  description: "Hookah market",
-};
+export async function generateMetadata({ params }: { params: { lang: Locale } }) {
+  const dictionary = await getDictionary(params.lang);
+  return {
+    title: dictionary.seo.title,
+    description: dictionary.seo.description,
+  };
+}
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));

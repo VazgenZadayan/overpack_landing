@@ -3,11 +3,14 @@ import "./Hero.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
-import Image from "next/image";
 import { FaTruck, FaUserShield, FaCreditCard, FaBolt, FaBoxes, FaGooglePlay, FaAppStore } from "react-icons/fa";
 import gsap from "gsap";
 
-const Hero = () => {
+interface HeroProps {
+  dictionary: any;
+}
+
+const Hero: React.FC<HeroProps> = ({ dictionary }) => {
   const pathname = usePathname();
 
   // Рефы для анимации
@@ -28,22 +31,22 @@ const Hero = () => {
   const featuresRepeatCount = 3;
 
   const RenderFeatures = useMemo(() => {
-    const features = [
-      { icon: <FaTruck size={30} color="#fff" />, text: "Удобная доставка" },
-      { icon: <FaUserShield size={30} color="#fff" />, text: "Официальные дистрибьюторы" },
-      { icon: <FaCreditCard size={30} color="#fff" />, text: "Безопасная Оплата картой" },
-      { icon: <FaBolt size={30} color="#fff" />, text: "Быстрая обработка заказов" },
-      { icon: <FaBoxes size={30} color="#fff" />, text: "Большой ассортимент товаров" },
+    const icons = [
+      <FaTruck size={30} color="#fff" key="truck" />, 
+      <FaUserShield size={30} color="#fff" key="shield" />, 
+      <FaCreditCard size={30} color="#fff" key="card" />, 
+      <FaBolt size={30} color="#fff" key="bolt" />, 
+      <FaBoxes size={30} color="#fff" key="boxes" />
     ];
     return Array.from({ length: featuresRepeatCount }).flatMap((_, i) =>
-      features.map((feature, j) => (
+      dictionary.hero.features.map((text: string, j: number) => (
         <div className="features__block" key={i + "-" + j}>
-          {feature.icon}
-          <span className="features__text big-paragraph">{feature.text}</span>
+          {icons[j]}
+          <span className="features__text big-paragraph">{text}</span>
         </div>
       ))
     );
-  }, [featuresRepeatCount]);
+  }, [featuresRepeatCount, dictionary]);
 
   useEffect(() => {
     // Анимация заголовка
@@ -109,71 +112,71 @@ const Hero = () => {
     <section className="main-banner" id="main">
       <header className="hero-header" ref={headerRef}>
         <Link href="/" className="hero-logo">
-          OverPack
+          {dictionary.hero.main}
         </Link>
         <nav className="hero-nav">
           <button
             onClick={() => scrollToSection("main")}
             className={`hero-nav__item ${pathname === "/" ? "active" : ""}`}
           >
-            Главная
+            {dictionary.hero.nav.main}
           </button>
           <button
             onClick={() => scrollToSection("advantages")}
             className={`hero-nav__item ${pathname === "/advantages" ? "active" : ""}`}
           >
-            Преимущества
+            {dictionary.hero.nav.advantages}
           </button>
           <button
             onClick={() => scrollToSection("business")}
             className={`hero-nav__item ${pathname === "/business" ? "active" : ""}`}
           >
-            Для бизнеса
+            {dictionary.hero.nav.business}
           </button>
           <button
             onClick={() => scrollToSection("about")}
             className={`hero-nav__item ${pathname === "/about" ? "active" : ""}`}
           >
-            О приложении
+            {dictionary.hero.nav.about}
           </button>
           <button
             onClick={() => scrollToSection("partners")}
             className={`hero-nav__item ${pathname === "/partners" ? "active" : ""}`}
           >
-            Партнерам
+            {dictionary.hero.nav.partners}
           </button>
           <div className="hero-lang">
             <LanguageSwitcher />
           </div>
         </nav>
       </header>
-      <h1 className="main-banner__title" ref={titleRef}>OverPack</h1>
+      <h1 className="main-banner__title" ref={titleRef}>{dictionary.hero.main}</h1>
       <span
         className="main-banner__subtitle main-banner__subtitle--dark"
         ref={el => { subtitleRefs.current[0] = el; }}
       >
-        — первый онлайн-магазин
+        {dictionary.hero.subtitle1}
       </span>
       <span
         className="main-banner__subtitle main-banner__subtitle--pink"
         ref={el => { subtitleRefs.current[1] = el; }}
       >
-        ĸальянной продуĸции
+        {dictionary.hero.subtitle2}
       </span>
       <span
         className="main-banner__subtitle main-banner__subtitle--dark"
         ref={el => { subtitleRefs.current[2] = el; }}
       >
-        в Армении
+        {dictionary.hero.subtitle3}
       </span>
       <div className="appstore-buttons">
         <div className="appstore-buttons__btn" ref={googlePlayBtnRef}>
           <FaGooglePlay size={60} color="#fff" />
-          <span className="appstore-buttons__label">Available on Google Play</span>
+          <span className="appstore-buttons__label">{dictionary.hero.googlePlay}</span>
         </div>
         <div className="appstore-buttons__btn" ref={appStoreBtnRef}>
           <FaAppStore size={60} color="#fff" />
-          <span className="appstore-buttons__label">Available on App Store</span>
+          <span className="appstore-buttons__label">{dictionary.hero.appStore}</span>
         </div>
       </div>
       <section className="features">

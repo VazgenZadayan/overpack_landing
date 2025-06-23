@@ -5,7 +5,11 @@ import { MdEmail, MdPhone } from "react-icons/md";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  dictionary: any;
+}
+
+const Footer: React.FC<FooterProps> = ({ dictionary }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const leftBlockRef = useRef<HTMLDivElement>(null);
@@ -124,27 +128,26 @@ const Footer: React.FC = () => {
   return (
     <footer className={styles.footer} id="partners" ref={sectionRef}>
         <h3 className={`${styles.footer__heading} h3`} ref={headingRef}>
-          Производите или поставляете кальянную продукцию?
+          {dictionary.footer.title}
         </h3>
         <div className={styles.footer__section}>
           <div className={styles.footer__leftBlock} ref={leftBlockRef}>
             <div className={`${styles.footer__cooperationText} big-paragraph sb`}>
-              Мы открыты к сотрудничеству с брендами и дистрибьюторами.
+              {dictionary.footer.cooperation}
             </div>
-            <button className={styles.footer__contactBtn} ref={btnRef}>Связаться</button>
+            <button className={styles.footer__contactBtn} ref={btnRef}>{dictionary.footer.contact}</button>
           </div>
           <div className={styles.footer__rightBlock} ref={rightBlockRef}>
             <div className={`${styles.footer__rightText} big-paragraph sb`}>
-              Если вы хотите продавать свою продукцию через Overpack — оставьте
-              заявку, и мы свяжемся с вами.
+              {dictionary.footer.desc}
             </div>
           </div>
         </div>
         <div className={styles.footer__bottom} ref={bottomRef}>
           <div style={{ flexDirection: 'column', alignItems: 'flex-start', display: 'flex', gap: '5px' }}>
-          <div className={styles.footer__copyright}>© OVERPACK 2025</div>
+          <div className={styles.footer__copyright}>{dictionary.footer.copyright}</div>
           <div className={styles.footer__developed}>
-            Developed by 
+            {dictionary.footer.developed} 
             <a href="https://am.linkedin.com/in/react-javascript-developer-frontend-engineer-nextjs-next-reactnative-typescript?trk=people-guest_people_search-card" target="_blank" rel="noopener noreferrer" className={styles.footer__devlink}>Gago</a>
             &amp;
             <a href="https://am.linkedin.com/in/vazgenzadayan/en" target="_blank" rel="noopener noreferrer" className={styles.footer__devlink}>Vazgen</a>
@@ -153,11 +156,11 @@ const Footer: React.FC = () => {
           <div className={styles.footer__contacts} ref={contactsRef}>
             <div className={styles.footer__contactsBlock}>
               <MdPhone size={24} color="#F03341" />
-              <a href="tel:+37441919694" className={styles.footer__contact}>+374 41 919694</a>
+              <a href="tel:+37441919694" className={styles.footer__contact}>{dictionary.footer.contacts.phone}</a>
             </div>
             <div className={styles.footer__contactsBlock}>
               <MdEmail size={24} color="#F03341" />
-              <a href="mailto:overpackhookahmarket@gmail.com" className={styles.footer__contact}>overpackhookahmarket@gmail.com</a>
+              <a href="mailto:overpackhookahmarket@gmail.com" className={styles.footer__contact}>{dictionary.footer.contacts.email}</a>
             </div>
           </div>
         </div>

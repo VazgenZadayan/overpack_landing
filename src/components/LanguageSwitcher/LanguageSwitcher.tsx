@@ -49,7 +49,7 @@ export default function LanguageSwitcher() {
             <Link
               key={language}
               className={`language-switcher__option ${
-                language === 'en' ? "active" : ""
+                language === pathname?.replaceAll('/', '') ? "active" : ""
               }`}
               onClick={() => setIsOpen(false)}
               href={redirectedPathname(language)}

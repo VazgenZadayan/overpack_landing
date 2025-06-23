@@ -14,7 +14,7 @@ export default async function IndexPage(props: {
   return (
     <html lang={lang}>
     <body>
-        <MainPage />
+        <MainPage dictionary={dictionary} />
     </body>
   </html>
   );

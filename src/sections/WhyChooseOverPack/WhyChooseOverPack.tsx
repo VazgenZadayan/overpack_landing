@@ -3,34 +3,11 @@ import styles from "./WhyChooseOverPack.module.scss";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const cards = [
-  {
-    title: "Официальные дистрибьюторы",
-    text: "Только оригинальная продукция напрямую от брендов. Гарантия качества и никаких подделок!",
-  },
-  {
-    title: "Огромный ассортимент",
-    text: "Всё для идеального кальяна: табаки, уголь, аксессуары и редкие новинки в одном месте!",
-  },
-  {
-    title: "Удобная доставĸа",
-    text: "Молниеносная доставка по Еревану. Получайте заказы быстро и без лишних ожиданий!",
-  },
-  {
-    title: "Оплата ĸартой",
-    text: "Современные и безопасные способы оплаты прямо в приложении. Максимум удобства!",
-  },
-  {
-    title: "Удобное приложение",
-    text: "Интуитивно понятный интерфейс, быстрый заказ и персональные предложения всегда под рукой!",
-  },
-  {
-    title: "Обратная связь",
-    text: "Всегда на связи! Оперативно решаем любые вопросы и учитываем ваши пожелания.",
-  },
-];
+interface WhyChooseOverPackProps {
+  dictionary: any;
+}
 
-const WhyChooseOverPack: React.FC = () => {
+const WhyChooseOverPack: React.FC<WhyChooseOverPackProps> = ({ dictionary }) => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
@@ -93,13 +70,13 @@ const WhyChooseOverPack: React.FC = () => {
   return (
     <section className={styles.whychoose} id="advantages" ref={sectionRef}>
       <h2 className={`${styles["whychoose__heading"]} h2`} ref={headingRef}>
-        Почему выбирают OverPack?
+        {dictionary.whyChoose.title}
       </h2>
       <div className={styles.whychoose__cards} ref={cardsContainerRef}>
-        {cards.map((card, idx) => (
+        {dictionary.whyChoose.cards.map((card: any, idx: number) => (
           <div className={styles.whychoose__card} key={idx}>
             <div className={`${styles["whychoose__card-title"]} h5`}>
-              {card.title.split(" ").map((word, i) => (
+              {card.title.split(" ").map((word: string, i: number) => (
                 <span key={i} style={{ display: "block" }}>
                   {word}
                 </span>

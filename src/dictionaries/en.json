@@ -12,5 +12,93 @@
     "readMore": "Read More",
     "learnMore": "Learn More",
     "contactUs": "Contact Us"
+  },
+  "hero": {
+    "main": "OverPack",
+    "nav": {
+      "main": "Home",
+      "advantages": "Advantages",
+      "business": "For Business",
+      "about": "About App",
+      "partners": "Partners"
+    },
+    "subtitle1": "— the first online store",
+    "subtitle2": "of hookah products",
+    "subtitle3": "in Armenia",
+    "googlePlay": "Available on Google Play",
+    "appStore": "Available on App Store",
+    "features": [
+      "Convenient delivery",
+      "Official distributors",
+      "Secure card payment",
+      "Fast order processing",
+      "Wide range of products"
+    ]
+  },
+  "whyChoose": {
+    "title": "Why choose OverPack?",
+    "cards": [
+      {
+        "title": "Official distributors",
+        "text": "Only original products directly from brands. Quality guarantee and no counterfeits!"
+      },
+      {
+        "title": "Huge assortment",
+        "text": "Everything for the perfect hookah: tobacco, charcoal, accessories, and rare novelties in one place!"
+      },
+      {
+        "title": "Convenient delivery",
+        "text": "Lightning-fast delivery in Yerevan. Receive your orders quickly and without unnecessary waiting!"
+      },
+      {
+        "title": "Card payment",
+        "text": "Modern and secure payment methods right in the app. Maximum convenience!"
+      },
+      {
+        "title": "User-friendly app",
+        "text": "Intuitive interface, quick ordering, and personalized offers always at hand!"
+      },
+      {
+        "title": "Feedback",
+        "text": "Always in touch! We promptly resolve any issues and consider your wishes."
+      }
+    ]
+  },
+  "applicationPreview": {
+    "lines": [
+      "Modern and",
+      "easy to",
+      "use",
+      "application"
+    ],
+    "alt": "Phone"
+  },
+  "industry": {
+    "title": "Working in the industry?",
+    "special": "We have special conditions for you",
+    "desc": "Work with us — the best offers for venues and shops only at",
+    "descBrand": "OverPack!",
+    "cards": [
+      "Exclusive wholesale prices!",
+      "Personal support at every step!",
+      "Fast order processing and shipping!",
+      "All hookah products — in one convenient app!"
+    ]
+  },
+  "footer": {
+    "title": "Do you manufacture or supply hookah products?",
+    "cooperation": "We are open to cooperation with brands and distributors.",
+    "contact": "Contact us",
+    "desc": "If you want to sell your products through Overpack — leave a request and we will contact you.",
+    "copyright": "© OVERPACK 2025",
+    "developed": "Developed by",
+    "contacts": {
+      "phone": "+374 41 919694",
+      "email": "overpackhookahmarket@gmail.com"
+    }
+  },
+  "seo": {
+    "title": "Overpack | Hookah Market",
+    "description": "Hookah market — the best choice for hookah products in Armenia."
   }
 }

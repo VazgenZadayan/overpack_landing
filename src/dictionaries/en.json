@@ -17,18 +17,18 @@
     "main": "OverPack",
     "nav": {
       "main": "Home",
-      "advantages": "Advantages",
+      "advantages": "Why us?",
       "business": "For Business",
       "about": "About App",
-      "partners": "Partners"
+      "partners": "For partners"
     },
-    "subtitle1": "— the first online store",
-    "subtitle2": "of hookah products",
+    "subtitle1": "The first online",
+    "subtitle2": "hookah store",
     "subtitle3": "in Armenia",
     "googlePlay": "Available on Google Play",
     "appStore": "Available on App Store",
     "features": [
-      "Convenient delivery",
+      "Prompt delivery",
       "Official distributors",
       "Secure card payment",
       "Fast order processing",
@@ -40,56 +40,55 @@
     "cards": [
       {
         "title": "Official distributors",
-        "text": "Only original products directly from brands. Quality guarantee and no counterfeits!"
+        "text": "Only original products. Quality guarantee"
       },
       {
         "title": "Huge assortment",
-        "text": "Everything for the perfect hookah: tobacco, charcoal, accessories, and rare novelties in one place!"
+        "text": "Everything for the perfect hookah: tobacco, charcoal, accessories in one place"
       },
       {
-        "title": "Convenient delivery",
-        "text": "Lightning-fast delivery in Yerevan. Receive your orders quickly and without unnecessary waiting!"
+        "title": "Prompt delivery",
+        "text": "Fast delivery in Yerevan. Receive your orders quickly"
       },
       {
         "title": "Card payment",
-        "text": "Modern and secure payment methods right in the app. Maximum convenience!"
+        "text": "Modern and secure payment methods right in the app"
       },
       {
         "title": "User-friendly app",
-        "text": "Intuitive interface, quick ordering, and personalized offers always at hand!"
+        "text": "Intuitive interface, quick ordering, and personalized offers"
       },
       {
         "title": "Feedback",
-        "text": "Always in touch! We promptly resolve any issues and consider your wishes."
+        "text": "Support 24/7 - quick solutions, just the way you want"
       }
     ]
   },
   "applicationPreview": {
     "lines": [
       "Modern and",
-      "easy to",
-      "use",
+      "easy to use",
       "application"
     ],
     "alt": "Phone"
   },
   "industry": {
     "title": "Working in the industry?",
-    "special": "We have special conditions for you",
+    "special": "We have special terms for you!",
     "desc": "Work with us — the best offers for venues and shops only at",
-    "descBrand": "OverPack!",
+    "descBrand": "OverPack",
     "cards": [
-      "Exclusive wholesale prices!",
-      "Personal support at every step!",
-      "Fast order processing and shipping!",
-      "All hookah products — in one convenient app!"
+      "Exclusive wholesale prices",
+      "Personal support at every step",
+      "Fast order processing and shipping",
+      "All hookah productss in one convenient app"
     ]
   },
   "footer": {
-    "title": "Do you manufacture or supply hookah products?",
-    "cooperation": "We are open to cooperation with brands and distributors.",
+    "title": "Do you produce or supply hookah products?",
+    "cooperation": "We are open to cooperation with brands and distributors",
     "contact": "Contact us",
-    "desc": "If you want to sell your products through Overpack — leave a request and we will contact you.",
+    "desc": "If you want to sell your products through Overpack please leave a request and we will contact you.",
     "copyright": "© OVERPACK 2025",
     "developed": "Developed by",
     "contacts": {

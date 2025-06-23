@@ -5,6 +5,18 @@
   font-size: 234px;
   line-height: normal;
   font-weight: 700;
+  @media (max-width: $breakpoint-xl) {
+    font-size: 214px;
+  }
+  @media (max-width: $breakpoint-desktop) {
+    font-size: 187px;
+  }
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 70px;
+  }
+  @media (max-width: $breakpoint-xs) {
+    font-size: 56px;
+  }
 }
 
 @mixin h2 {
@@ -12,6 +24,9 @@
   font-size: 84px;
   line-height: normal;
   font-weight: 700;
+  @media (max-width: $breakpoint-desktop) {
+    font-size: 66px;
+  }
 }
 
 @mixin h3 {
@@ -19,6 +34,12 @@
   font-size: 82px;
   line-height: normal;
   font-weight: 700;
+  @media (max-width: $breakpoint-desktop) {
+    font-size: 60px;
+  }
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 27px;
+  }
 }
 
 @mixin h4 {
@@ -26,6 +47,12 @@
   font-size: 50px;
   line-height: normal;
   font-weight: 700;
+  @media (max-width: $breakpoint-desktop) {
+    font-size: 40px;
+  }
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 20px;
+  }
 }
 
 @mixin h5 {
@@ -40,6 +67,9 @@
   font-size: 30px;
   line-height: normal;
   font-weight: 600;
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 20px;
+  }
 }
 
 @mixin medParagraph {

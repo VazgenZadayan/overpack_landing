@@ -1,13 +1,22 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useRef, useEffect } from "react";
 import "./Hero.scss";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 import Image from "next/image";
 import { FaTruck, FaUserShield, FaCreditCard, FaBolt, FaBoxes, FaGooglePlay, FaAppStore } from "react-icons/fa";
+import gsap from "gsap";
 
 const Hero = () => {
   const pathname = usePathname();
+
+  // Рефы для анимации
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const googlePlayBtnRef = useRef<HTMLDivElement>(null);
+  const appStoreBtnRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const featuresTrackRef = useRef<HTMLDivElement>(null);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -36,9 +45,69 @@ const Hero = () => {
     );
   }, [featuresRepeatCount]);
 
+  useEffect(() => {
+    // Анимация заголовка
+    if (titleRef.current) {
+      gsap.fromTo(
+        titleRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+      );
+    }
+    // Анимация подзаголовков
+    if (subtitleRefs.current.length) {
+      gsap.fromTo(
+        subtitleRefs.current,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, stagger: 0.15, delay: 0.3, ease: "power2.out" }
+      );
+    }
+    // Анимация кнопок
+    if (googlePlayBtnRef.current) {
+      gsap.fromTo(
+        googlePlayBtnRef.current,
+        { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, delay: 0.7, ease: "power2.out" }
+      );
+    }
+    if (appStoreBtnRef.current) {
+      gsap.fromTo(
+        appStoreBtnRef.current,
+        { x: 40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.7, delay: 0.85, ease: "power2.out" }
+      );
+    }
+    // Анимация header (выплывает сверху)
+    if (headerRef.current) {
+      gsap.fromTo(
+        headerRef.current,
+        { y: -60, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, delay: 0.2, ease: "power2.out" }
+      );
+    }
+    // Анимация features__block
+    if (featuresTrackRef.current) {
+      const blocks = gsap.utils.toArray<HTMLElement>(
+        featuresTrackRef.current.querySelectorAll('.features__block')
+      );
+      gsap.fromTo(
+        blocks,
+        { scale: 0.8, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.08,
+          delay: 1.1,
+          ease: 'power2.out',
+        }
+      );
+    }
+  }, []);
+
   return (
     <section className="main-banner" id="main">
-      <header className="hero-header">
+      <header className="hero-header" ref={headerRef}>
         <Link href="/" className="hero-logo">
           OverPack
         </Link>
@@ -78,28 +147,37 @@ const Hero = () => {
           </div>
         </nav>
       </header>
-      <h1 className="main-banner__title">OverPack</h1>
-      <span className="main-banner__subtitle main-banner__subtitle--dark">
+      <h1 className="main-banner__title" ref={titleRef}>OverPack</h1>
+      <span
+        className="main-banner__subtitle main-banner__subtitle--dark"
+        ref={el => { subtitleRefs.current[0] = el; }}
+      >
         — первый онлайн-магазин
       </span>
-      <span className="main-banner__subtitle main-banner__subtitle--pink">
+      <span
+        className="main-banner__subtitle main-banner__subtitle--pink"
+        ref={el => { subtitleRefs.current[1] = el; }}
+      >
         ĸальянной продуĸции
       </span>
-      <span className="main-banner__subtitle main-banner__subtitle--dark">
+      <span
+        className="main-banner__subtitle main-banner__subtitle--dark"
+        ref={el => { subtitleRefs.current[2] = el; }}
+      >
         в Армении
       </span>
       <div className="appstore-buttons">
-        <div className="appstore-buttons__btn">
+        <div className="appstore-buttons__btn" ref={googlePlayBtnRef}>
           <FaGooglePlay size={60} color="#fff" />
           <span className="appstore-buttons__label">Available on Google Play</span>
         </div>
-        <div className="appstore-buttons__btn">
+        <div className="appstore-buttons__btn" ref={appStoreBtnRef}>
           <FaAppStore size={60} color="#fff" />
           <span className="appstore-buttons__label">Available on App Store</span>
         </div>
       </div>
       <section className="features">
-        <div className="features__track">{RenderFeatures}</div>
+        <div className="features__track" ref={featuresTrackRef}>{RenderFeatures}</div>
       </section>
     </section>
   );

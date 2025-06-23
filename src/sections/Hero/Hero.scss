@@ -88,39 +88,75 @@
   }
 
   &__btn {
+    position: relative;
     display: flex;
     align-items: center;
-    transition: transform 0.1s;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    overflow: hidden;
     cursor: pointer;
-    border: none;
+    z-index: 1;
     background: none;
-    padding: 0;
-    outline: none;
-    text-decoration: none;
+    transition: box-shadow 0.3s, transform 0.1s;
+
+    // Градиентный анимированный фон через ::before
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: 12px;
+      background: linear-gradient(270deg, #fdebec, #f03341, #fdebec, #f03341);
+      background-size: 400% 400%;
+      animation: gradientBG 5s ease infinite;
+      opacity: 0.92;
+      transition: opacity 0.3s;
+    }
+
     &:hover {
       transform: scale(1.04);
+      box-shadow: 0 4px 24px rgba(238, 9, 121, 0.3);
+    }
+
+    // Контент поверх градиента
+    > * {
+      position: relative;
+      z-index: 1;
     }
   }
 }
 
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .appstore-buttons__btn svg {
-  width: 60px;
-  height: 60px;
+  width: 44px;
+  height: 44px;
   color: #fff;
   display: block;
-  background: var(--primary-color, #222);
-  border-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  padding: 8px;
+  background: transparent;
+  border-radius: 8px;
+  box-shadow: none;
+  padding: 0;
 }
 
 .appstore-buttons__label {
-  margin-left: 16px;
-  font-size: 18px;
-  color: var(--dark-text);
+  margin-left: 10px;
+  font-size: 16px;
+  color: #fff;
   font-weight: 700;
   white-space: nowrap;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  text-shadow: 0 1px 8px rgba(0,0,0,0.18);
 }
 
 .hero-header {

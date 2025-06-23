@@ -78,16 +78,14 @@ const ApplicationPreview: React.FC<ApplicationPreviewProps> = ({ dictionary }) =
               ))}
             </span>
           </div>
-          <div className={styles.screenSection__right}>
-            <div ref={phoneRef}>
+          <div className={styles.screenSection__right} ref={phoneRef}>
               <Image
-                src="/phone-bg.png"
-                width={200}
-                height={400}
+                src="/phone.png"
+                height={686}
+                width={329}
                 alt={dictionary.applicationPreview.alt}
                 className={styles.screenSection__phoneImg}
               />
-            </div>
           </div>
         </div>
       </div>

@@ -111,10 +111,10 @@ const IndustrySection: React.FC<IndustrySectionProps> = ({ dictionary }) => {
   }, []);
 
   const icons = [
-    <FaTags color={iconColor} key="tags" />, 
-    <FaHeadset color={iconColor} key="headset" />, 
-    <FaShippingFast color={iconColor} key="shipping" />, 
-    <FaMobileAlt color={iconColor} key="mobile" />
+    <FaTags color={iconColor} key="tags" size={24} />, 
+    <FaHeadset color={iconColor} key="headset" size={24} />, 
+    <FaShippingFast color={iconColor} key="shipping" size={24} />, 
+    <FaMobileAlt color={iconColor} key="mobile" size={24} />
   ];
 
   return (

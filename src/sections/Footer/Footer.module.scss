@@ -1,144 +1,215 @@
-@import '../../styles/_variables.module.scss';
-@import '../../styles/_typography.module.scss';
+@import "../../styles/_variables.module.scss";
+@import "../../styles/_typography.module.scss";
 
 .footer {
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 100px;
-  padding-bottom: 20px;
-  background: $gray-bg;
-
-  &__heading {
-    @include h2;
-    color: $black;
-    text-align: left;
-    max-width: 1280px;
-  }
-
-  &__section {
-    display: flex;
-    justify-content: space-between;
+    min-height: 100vh;
     width: 100%;
-    max-width: 1280px;
-  }
-
-  &__leftBlock {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-    flex: 1;
-    padding-top: 40px;
-    max-width: 40%;
-  }
+    padding-top: 100px;
+    padding-bottom: 20px;
+    background: $gray-bg;
 
-  &__rightBlock {
-    background: $white;
-    border-radius: 20px;
-    padding: 40px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    flex: 1;
-    max-width: 50%;
-  }
+    padding: 20vh 15px 50px 15px;
 
-  &__cooperationText {
-    @include bigParagraphSB;
-    color: $black;
-  }
-
-  &__rightText {
-    @include bigParagraphSB;
-    color: $black;
-    text-align: left;
-  }
-
-  &__contactBtn {
-    width: 225px;
-    height: 50px;
-    background: $red-main;
-    color: $white;
-    border: none;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: auto;
-    align-self: flex-start;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &:hover {
-      background: darken($red-main, 8%);
+    &__heading {
+        @include h2;
+        color: $black;
+        text-align: left;
+        max-width: 1280px;
     }
-  }
 
-  &__bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 30px;
-    font-size: 16px;
-    width: 100%;
-    max-width: 1280px;
-  }
+    &__section {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1280px;
 
-  &__copyright {
-    @include paragraphMini;
-    color: $black;
-  }
-
-  &__contacts {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
-  }
-
-  &__contactsColumn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  &__contact {
-    @include paragraphMini;
-    color: $black;
-    font-size: 18px;
-    text-decoration: none;
-  }
-
-  &__developed {
-    @include paragraphMini;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: $black;
-  }
-
-  &__devlink {
-    color: $black;
-    text-decoration: underline;
-    font-weight: 600;
-    transition: text-decoration 0.2s;
-    &:hover {
-      text-decoration: underline;
+        @media (max-width: 640px) {
+            flex-direction: column-reverse;
+            gap: 30px;
+        }
     }
-  }
-  &__contactsBlock {
+
+    &__leftBlock {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 60px;
+
+        @media (max-width: 640px) {
+            flex-direction: column;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 0px;
+            margin-top: 30px;
+        }
+    }
+
+    &__rightBlock {
+        background: $white;
+        border-radius: 20px;
+        padding: 40px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+
+        @media (max-width: 640px) {
+            padding: 20px 30px;
+        }
+    }
+
+    &__cooperationText {
+        @include bigParagraphSB;
+        color: $black;
+
+        max-width: 50%;
+
+        @media (max-width: 640px) {
+            max-width: 100%;
+        }
+    }
+
+    &__rightText {
+        @include bigParagraphSB;
+        color: $black;
+        text-align: left;
+    }
+
+    &__contactBtn {
+        width: 40%;
+        height: 50px;
+        background: $red-main;
+        color: $white;
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: auto;
+        align-self: flex-start;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+            background: darken($red-main, 8%);
+        }
+
+        @media (max-width: 640px) {
+            width: 100%;
+        }
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 30px;
+        font-size: 16px;
+        width: 100%;
+        max-width: 1280px;
+
+        @media (max-width: 768px) {
+            flex-direction: column-reverse;
+            gap: 20px;
+            text-align: center;
+        }
+    }
+
+    &__copyright {
+        @include paragraphMini;
+        color: $black;
+
+        @media (max-width: 768px) {
+            margin-top: 20px;
+        }
+    }
+
+    &__contacts {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+
+        @media (max-width: 768px) {
+            margin-top: 20px;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            align-items: center;
+        }
+    }
+
+    &__contactsColumn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__contact {
+        @include paragraphMini;
+        color: $black;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    &__developed {
+        @include paragraphMini;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: $black;
+    }
+
+    &__devlink {
+        color: $black;
+        text-decoration: underline;
+        font-weight: 600;
+        transition: text-decoration 0.2s;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__contactsBlock {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+            align-items: center;
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 20vh 15px 0px 15px;
+    }
+}
+
+.subFooter {
+    flex-direction: column;
+    align-items: flex-start;
     display: flex;
-    align-items: center;
     gap: 5px;
-  }
-} 
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        align-items: center;
+    }
+}

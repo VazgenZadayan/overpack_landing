@@ -103,7 +103,7 @@ const MainPage: React.FC<{ dictionary: any }> = ({ dictionary }) => {
             <div className="fullpage-scroll-page">
                 <Footer dictionary={dictionary} />
             </div>
-            <Anchor scrollContainerRef={containerRef} />
+            {/* <Anchor scrollContainerRef={containerRef} /> */}
         </div>
     );
 };

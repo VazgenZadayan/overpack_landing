@@ -58,6 +58,7 @@
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
+        margin-bottom: 30px;
 
         @media (max-width: 640px) {
             padding: 20px 30px;
@@ -143,6 +144,7 @@
 
         @media (max-width: 768px) {
             margin-top: 20px;
+
             flex-direction: column;
             gap: 20px;
             text-align: center;

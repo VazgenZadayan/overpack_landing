@@ -1,87 +1,96 @@
-@import './_variables.module.scss';
+@import "./_variables.module.scss";
 
 @mixin h1 {
-  font-family: $font-main;
-  font-size: 234px;
-  line-height: normal;
-  font-weight: 700;
-  @media (max-width: $breakpoint-xl) {
-    font-size: 214px;
-  }
-  @media (max-width: $breakpoint-desktop) {
-    font-size: 187px;
-  }
-  @media (max-width: $breakpoint-tablet) {
-    font-size: 70px;
-  }
-  @media (max-width: $breakpoint-xs) {
-    font-size: 56px;
-  }
+    font-family: $font-main;
+    font-size: 234px;
+    line-height: normal;
+    font-weight: 700;
+    @media (max-width: $breakpoint-xl) {
+        font-size: 214px;
+    }
+    @media (max-width: $breakpoint-desktop) {
+        font-size: 187px;
+    }
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 70px;
+    }
+    @media (max-width: $breakpoint-xs) {
+        font-size: 56px;
+    }
 }
 
 @mixin h2 {
-  font-family: $font-main;
-  font-size: 84px;
-  line-height: normal;
-  font-weight: 700;
-  @media (max-width: $breakpoint-desktop) {
-    font-size: 66px;
-  }
+    font-family: $font-main;
+    font-size: 84px;
+    line-height: normal;
+    margin-bottom: 20px;
+    font-weight: 700;
+    @media (max-width: $breakpoint-desktop) {
+        font-size: 66px;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 48px;
+    }
+
+    @media (max-width: 648px) {
+        font-size: 32px;
+    }
 }
 
 @mixin h3 {
-  font-family: $font-main;
-  font-size: 82px;
-  line-height: normal;
-  font-weight: 700;
-  @media (max-width: $breakpoint-desktop) {
-    font-size: 60px;
-  }
-  @media (max-width: $breakpoint-tablet) {
-    font-size: 27px;
-  }
+    font-family: $font-main;
+    font-size: 82px;
+    line-height: normal;
+    font-weight: 700;
+    @media (max-width: $breakpoint-desktop) {
+        font-size: 60px;
+    }
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 27px;
+    }
 }
 
 @mixin h4 {
-  font-family: $font-main;
-  font-size: 50px;
-  line-height: normal;
-  font-weight: 700;
-  @media (max-width: $breakpoint-desktop) {
-    font-size: 40px;
-  }
-  @media (max-width: $breakpoint-tablet) {
-    font-size: 20px;
-  }
+    font-family: $font-main;
+    font-size: 50px;
+    line-height: normal;
+    font-weight: 700;
+    @media (max-width: $breakpoint-desktop) {
+        font-size: 40px;
+    }
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 20px;
+    }
 }
 
 @mixin h5 {
-  font-family: $font-main;
-  font-size: 28px;
-  line-height: normal;
-  font-weight: 700;
+    font-family: $font-main;
+    font-size: 28px;
+    line-height: normal;
+    font-weight: 700;
 }
 
 @mixin bigParagraphSB {
-  font-family: $font-main;
-  font-size: 30px;
-  line-height: normal;
-  font-weight: 600;
-  @media (max-width: $breakpoint-tablet) {
-    font-size: 20px;
-  }
+    font-family: $font-main;
+    font-size: 30px;
+    line-height: normal;
+    font-weight: 600;
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 20px;
+    }
 }
 
 @mixin medParagraph {
-  font-family: $font-main;
-  font-size: 21px;
-  line-height: normal;
-  font-weight: 400;
+    font-family: $font-main;
+    font-size: 21px;
+    line-height: normal;
+    font-weight: 400;
 }
 
 @mixin paragraphMini {
-  font-family: $font-main;
-  font-size: 17px;
-  line-height: normal;
-  font-weight: 400;
-} 
+    font-family: $font-main;
+    font-size: 17px;
+    line-height: normal;
+    font-weight: 400;
+}

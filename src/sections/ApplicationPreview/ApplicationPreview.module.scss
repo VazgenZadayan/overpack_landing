@@ -46,7 +46,9 @@
     &__left {
         display: flex;
         align-items: center;
+        justify-content: center;
         height: 100%;
+        width: 100%;
     }
 
     &__text {
@@ -61,6 +63,7 @@
         @media (max-width: 768px) {
             width: 100%;
             min-width: 100%;
+            text-align: center;
         }
     }
 

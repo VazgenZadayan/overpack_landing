@@ -41,6 +41,7 @@
     top: calc(100% + 6px);
     right: -70%;
     background: $white;
+    z-index: 10000000;
     border-radius: 10px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
     padding: 6px;

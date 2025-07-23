@@ -15,6 +15,8 @@ import {
 } from "react-icons/fa";
 import gsap from "gsap";
 import Image from "next/image";
+import GooglePlayBadge from "@/components/GooglePlayBadge";
+import AppStoreBadge from "@/components/AppStoreBadge";
 
 interface HeroProps {
     dictionary: any;
@@ -235,24 +237,22 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
             </p>
 
             <div className={styles["appstore-buttons"]}>
-                <div
-                    className={styles["appstore-buttons__btn"]}
-                    ref={googlePlayBtnRef}
+                <a
+                    href="#"
+                    className={styles["store-badge"]}
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
-                    <FaGooglePlay size={60} color="#fff" />
-                    <span className={styles["appstore-buttons__label"]}>
-                        {dictionary.hero.googlePlay}
-                    </span>
-                </div>
-                <div
-                    className={styles["appstore-buttons__btn"]}
-                    ref={appStoreBtnRef}
+                    <GooglePlayBadge />
+                </a>
+                <a
+                    href="#"
+                    className={styles["store-badge"]}
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
-                    <FaAppStore size={60} color="#fff" />
-                    <span className={styles["appstore-buttons__label"]}>
-                        {dictionary.hero.appStore}
-                    </span>
-                </div>
+                    <AppStoreBadge />
+                </a>
             </div>
             <div className={styles["features"]}>
                 <div

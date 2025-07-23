@@ -82,101 +82,26 @@
     box-sizing: border-box;
 }
 
+    .appstore-buttons {
+        width: '100%';
+        height: '100%';
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: 10px;
+    }
+
 .features__text {
     @include paragraphMini;
     color: $white;
 }
 
-.appstore-buttons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    position: relative;
-
-    &__btn {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 16px;
-        border-radius: 12px;
-        overflow: hidden;
-        cursor: pointer;
-        z-index: 1;
-        background: none;
-        transition: box-shadow 0.3s, transform 0.1s;
-        &::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            border-radius: 12px;
-            background: linear-gradient(
-                270deg,
-                $red-bg,
-                $red-main,
-                $red-bg,
-                $red-main
-            );
-            background-size: 400% 400%;
-            animation: gradientBG 5s ease infinite;
-            opacity: 0.92;
-            transition: opacity 0.3s;
-        }
-        &:hover {
-            transform: scale(1.04);
-            box-shadow: 0 4px 24px rgba(238, 9, 121, 0.3);
-        }
-        > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        @media screen and (max-width: 900px) and (orientation: landscape) {
-            padding: 4px 16px;
-        }
-    }
-
+.store-badge {
+    display: none;
     @media (max-width: 640px) {
-        flex-direction: column;
-
-        &__btn {
-            min-width: 300px;
-        }
+        display: block;
     }
-}
-
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.appstore-buttons__btn svg {
-    width: 44px;
-    height: 44px;
-    color: $white;
-    display: block;
-    background: transparent;
-    border-radius: 8px;
-    box-shadow: none;
-    padding: 0;
-}
-
-.appstore-buttons__label {
-    margin-left: 10px;
-    font-size: 16px;
-    color: $white;
-    font-weight: 700;
-    white-space: nowrap;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.18);
 }
 
 .hero-header {

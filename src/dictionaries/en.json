@@ -14,7 +14,7 @@
     "contactUs": "Contact Us"
   },
   "hero": {
-    "main": "OverPack",
+    "main": "Overpack",
     "nav": {
       "main": "Home",
       "advantages": "Why us?",
@@ -36,7 +36,7 @@
     ]
   },
   "whyChoose": {
-    "title": "Why choose OverPack?",
+    "title": "Why choose Overpack?",
     "cards": [
       {
         "title": "Official distributors",
@@ -76,7 +76,7 @@
     "title": "Working in the industry?",
     "special": "We have special terms for you!",
     "desc": "Work with us — the best offers for venues and shops only at",
-    "descBrand": "OverPack",
+    "descBrand": "Overpack",
     "cards": [
       "Exclusive wholesale prices",
       "Personal support at every step",
@@ -99,5 +99,10 @@
   "seo": {
     "title": "Overpack | Hookah Market",
     "description": "Hookah market — the best choice for hookah products in Armenia."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "Sorry, the page you are looking for does not exist.",
+    "backToHome": "Back to Home"
   }
 }

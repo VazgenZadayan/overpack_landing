@@ -1,56 +1,52 @@
+// middleware.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-
-import { match as matchLocale } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
 import { i18n } from "./i18n-config";
 
-function getLocale(request: NextRequest): string | undefined {
-  // Negotiator expects plain object so we need to transform headers
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-  // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales;
-
-  // Use negotiator and intl-localematcher to get best locale
-  let languages = new Negotiator({ headers: negotiatorHeaders }).languages(
-    locales,
-  );
-
-  const locale = matchLocale(languages, locales, i18n.defaultLocale);
-
-  return locale;
-}
-
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
-  if (
-    [
-      '/phone.png',
-      '/robots.txt'
-    ].includes(pathname)
-  )
-    return
+  const { nextUrl } = request;
+  const hostname = nextUrl.hostname;
+  const protocol = nextUrl.protocol;
 
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
-  );
+  const isLocalhost =
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname === "[::1]";
 
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
-
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
+  if (protocol === "http:" && !isLocalhost) {
     return NextResponse.redirect(
-      new URL(
-        `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
-        request.url,
-      ),
+      `https://${hostname}${nextUrl.pathname}${nextUrl.search}`,
+      308
     );
   }
+
+  console.log(hostname, 'hostname');
+
+  if (hostname.includes("www")) {
+    const newHost = hostname.replace(/^www\./, "");
+    return NextResponse.redirect(
+      `https://${newHost}${nextUrl.pathname}${nextUrl.search}`,
+      308
+    );
+  }
+
+  const pathname = nextUrl.pathname;
+  const allowedLocales = i18n.locales;
+  const isRoot = pathname === "/";
+  const isAllowedLocale = allowedLocales.some(
+    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
+  );
+
+  if (isRoot || isAllowedLocale) {
+    return NextResponse.next();
+  }
+
+  const isLangPath = /^\/[a-zA-Z]{2}(\/|$)/.test(pathname);
+  if (isLangPath) {
+    return NextResponse.rewrite(new URL("/not-found", request.url));
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {

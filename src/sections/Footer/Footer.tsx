@@ -137,9 +137,16 @@ const Footer: React.FC<FooterProps> = ({ dictionary }) => {
                     <div className={styles.footer__cooperationText}>
                         {dictionary.footer.cooperation}
                     </div>
-                    <button className={styles.footer__contactBtn} ref={btnRef}>
-                        {dictionary.footer.contact}
-                    </button>
+                    <button
+  className={styles.footer__contactBtn}
+  onClick={() => {
+    window.location.href = 'tel:+37441919694';
+  }}
+  ref={btnRef}
+>
+  {dictionary.footer.contact}
+</button>
+
                 </div>
                 <div className={styles.footer__rightBlock} ref={rightBlockRef}>
                     <div className={styles.footer__rightText}>
@@ -153,25 +160,29 @@ const Footer: React.FC<FooterProps> = ({ dictionary }) => {
                         {dictionary.footer.copyright}
                     </div>
                     <div className={styles.footer__developed}>
-                        {dictionary.footer.developed}
-                        <a
-                            href="https://am.linkedin.com/in/react-javascript-developer-frontend-engineer-nextjs-next-reactnative-typescript?trk=people-guest_people_search-card"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.footer__devlink}
-                        >
-                            Gago
-                        </a>
-                        &amp;
-                        <a
-                            href="https://am.linkedin.com/in/vazgenzadayan/en"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={styles.footer__devlink}
-                        >
-                            Vazgen
-                        </a>
-                    </div>
+  {dictionary.footer.developed}
+  <span
+    onClick={() => {
+    window.open(
+        'https://am.linkedin.com/in/vazgenzadayan/en',
+        '_blank',
+        'noopener'
+        );
+      window.open(
+        'https://am.linkedin.com/in/react-javascript-developer-frontend-engineer-nextjs-next-reactnative-typescript?trk=people-guest_people_search-card',
+        '_blank',
+        'noopener'
+      );
+
+    }}
+    className={styles.footer__devlink}
+    style={{ cursor: 'pointer' }}
+  >
+    Overpack
+  </span>
+</div>
+
+
                 </div>
                 <div className={styles.footer__contacts} ref={contactsRef}>
                     <div className={styles.footer__contactsBlock}>

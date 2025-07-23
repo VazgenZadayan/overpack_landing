@@ -1,13 +1,18 @@
+import MainPage from "@/components/MainPage";
 import { getDictionary } from "../../get-dictionary";
-import { Locale } from "../../i18n-config";
-import MainPage from "@/pages/MainPage";
+import { Locale, i18n } from "../../i18n-config";
+import { notFound } from "next/navigation";
 
 export default async function IndexPage(props: {
-  params: Promise<{ lang: Locale }>;
+  params: { lang: string };
 }) {
-  const { lang } = await props.params;
+  const { lang } = props.params;
 
-  const dictionary = await getDictionary(lang);
+  if (!i18n.locales.includes(lang as Locale)) {
+    notFound();
+  }
+
+  const dictionary = await getDictionary(lang as Locale);
   
   return (
     <html lang={lang}>

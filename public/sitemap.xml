@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- English version -->
+  <url>
+    <loc>https://overpack.am/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overpack.am/"/>
+    <xhtml:link rel="alternate" hreflang="hy" href="https://overpack.am/hy/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overpack.am/ru/"/>
+  </url>
+
+  <!-- Armenian version -->
+  <url>
+    <loc>https://overpack.am/hy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overpack.am/"/>
+    <xhtml:link rel="alternate" hreflang="hy" href="https://overpack.am/hy/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overpack.am/ru/"/>
+  </url>
+
+  <!-- Russian version -->
+  <url>
+    <loc>https://overpack.am/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://overpack.am/"/>
+    <xhtml:link rel="alternate" hreflang="hy" href="https://overpack.am/hy/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://overpack.am/ru/"/>
+  </url>
+
+</urlset> 

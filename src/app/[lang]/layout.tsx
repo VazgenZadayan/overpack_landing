@@ -1,6 +1,7 @@
 import { i18n, type Locale } from "../../i18n-config";
 import { getDictionary } from "../../get-dictionary";
 import "../../styles/global.scss";
+import StructuredData from "../../components/StructuredData";
 
 const BASE_URL = "https://overpack.am";
 
@@ -10,12 +11,46 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   return {
     title: dictionary.seo.title,
     description: dictionary.seo.description,
+    keywords: dictionary.seo.keywords,
+    openGraph: {
+      title: dictionary.seo.title,
+      description: dictionary.seo.description,
+      url: lang === "en" ? `${BASE_URL}/` : `${BASE_URL}/${lang}/`,
+      siteName: 'Overpack',
+      locale: lang,
+      type: 'website',
+      images: [
+        {
+          url: `${BASE_URL}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: dictionary.seo.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: dictionary.seo.title,
+      description: dictionary.seo.description,
+      images: [`${BASE_URL}/og-image.png`],
+    },
     alternates: {
       canonical: lang === "en" ? `${BASE_URL}/` : `${BASE_URL}/${lang}/`,
       languages: {
         en: `${BASE_URL}/`,
         hy: `${BASE_URL}/hy/`,
         ru: `${BASE_URL}/ru/`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
   };
@@ -32,9 +67,14 @@ export default async function Root({
   children: React.ReactNode;
   params: { lang: Locale };
 }) {
+  const dictionary = await getDictionary(params.lang);
+  
   return (
     <html lang={params.lang}>
-      <body>{children}</body>
+      <body>
+        <StructuredData lang={params.lang} dictionary={dictionary} />
+        {children}
+      </body>
     </html>
   );
 }

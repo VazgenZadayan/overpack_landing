@@ -1,1 +1,5 @@
-export { default } from './[lang]/not-found';
+import NotFound from './[lang]/not-found';
+
+export default function RootNotFound() {
+  return <NotFound />;
+}

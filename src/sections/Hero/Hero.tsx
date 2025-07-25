@@ -10,8 +10,6 @@ import {
     FaCreditCard,
     FaBolt,
     FaBoxes,
-    FaGooglePlay,
-    FaAppStore,
 } from "react-icons/fa";
 import gsap from "gsap";
 import Image from "next/image";
@@ -37,6 +35,14 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
+            element.focus(); // Фокус для скринридеров
+        }
+    };
+
+    const handleKeyDown = (event: React.KeyboardEvent, sectionId: string) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            scrollToSection(sectionId);
         }
     };
 
@@ -52,7 +58,12 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
         ];
         return Array.from({ length: featuresRepeatCount }).flatMap((_, i) =>
             dictionary.hero.features.map((text: string, j: number) => (
-                <div className={styles["features__block"]} key={i + "-" + j}>
+                <div 
+                    className={styles["features__block"]} 
+                    key={i + "-" + j}
+                    role="listitem"
+                    aria-label={text}
+                >
                     {icons[j]}
                     <span className={styles["features__text"]}>{text}</span>
                 </div>
@@ -148,18 +159,20 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
     }, []);
 
     return (
-        <section className={styles["main-banner"]} id="main">
+        <section className={styles["main-banner"]} id="main" role="banner" aria-label="Main banner">
             <header className={styles["hero-header"]} ref={headerRef}>
-                <Link href="/" className={styles["hero-logo"]}>
-                    {/* <span className={styles['paragraphMini']}>{dictionary.hero.main}</span> */}
-                    <Image src={LogoWithText} alt="" width={120} height={60} />
+                <Link href="/" className={styles["hero-logo"]} aria-label="Overpack - Home">
+                    <Image src={LogoWithText} alt="Overpack Logo" width={120} height={60} />
                 </Link>
-                <nav className={styles["hero-nav"]}>
+                <nav className={styles["hero-nav"]} role="navigation" aria-label="Main navigation">
                     <button
                         onClick={() => scrollToSection("main")}
+                        onKeyDown={(e) => handleKeyDown(e, "main")}
                         className={`${styles["hero-nav__item"]} ${
                             pathname === "/" ? styles["active"] : ""
                         }`}
+                        aria-label={`Go to ${dictionary.hero.nav.main} section`}
+                        tabIndex={0}
                     >
                         <span className={styles["paragraphMini"]}>
                             {dictionary.hero.nav.main}
@@ -167,9 +180,12 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
                     </button>
                     <button
                         onClick={() => scrollToSection("advantages")}
+                        onKeyDown={(e) => handleKeyDown(e, "advantages")}
                         className={`${styles["hero-nav__item"]} ${
                             pathname === "/advantages" ? styles["active"] : ""
                         }`}
+                        aria-label={`Go to ${dictionary.hero.nav.advantages} section`}
+                        tabIndex={0}
                     >
                         <span className={styles["paragraphMini"]}>
                             {dictionary.hero.nav.advantages}
@@ -177,9 +193,12 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
                     </button>
                     <button
                         onClick={() => scrollToSection("business")}
+                        onKeyDown={(e) => handleKeyDown(e, "business")}
                         className={`${styles["hero-nav__item"]} ${
                             pathname === "/business" ? styles["active"] : ""
                         }`}
+                        aria-label={`Go to ${dictionary.hero.nav.business} section`}
+                        tabIndex={0}
                     >
                         <span className={styles["paragraphMini"]}>
                             {dictionary.hero.nav.business}
@@ -187,9 +206,12 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
                     </button>
                     <button
                         onClick={() => scrollToSection("about")}
+                        onKeyDown={(e) => handleKeyDown(e, "about")}
                         className={`${styles["hero-nav__item"]} ${
                             pathname === "/about" ? styles["active"] : ""
                         }`}
+                        aria-label={`Go to ${dictionary.hero.nav.about} section`}
+                        tabIndex={0}
                     >
                         <span className={styles["paragraphMini"]}>
                             {dictionary.hero.nav.about}
@@ -197,9 +219,12 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
                     </button>
                     <button
                         onClick={() => scrollToSection("partners")}
+                        onKeyDown={(e) => handleKeyDown(e, "partners")}
                         className={`${styles["hero-nav__item"]} ${
                             pathname === "/partners" ? styles["active"] : ""
                         }`}
+                        aria-label={`Go to ${dictionary.hero.nav.partners} section`}
+                        tabIndex={0}
                     >
                         <span className={styles["paragraphMini"]}>
                             {dictionary.hero.nav.partners}
@@ -236,12 +261,13 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
                 {dictionary.hero.subtitle3}
             </p>
 
-            <div className={styles["appstore-buttons"]}>
+            <div className={styles["appstore-buttons"]} role="group" aria-label="Download app">
                 <a
                     href="#"
                     className={styles["store-badge"]}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Download Overpack app from Google Play Store"
                 >
                     <GooglePlayBadge />
                 </a>
@@ -250,14 +276,16 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
                     className={styles["store-badge"]}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Download Overpack app from Apple App Store"
                 >
                     <AppStoreBadge />
                 </a>
             </div>
-            <div className={styles["features"]}>
+            <div className={styles["features"]} role="region" aria-label="Features">
                 <div
                     className={styles["features__track"]}
                     ref={featuresTrackRef}
+                    aria-live="polite"
                 >
                     {RenderFeatures}
                 </div>

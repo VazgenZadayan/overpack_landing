@@ -8,6 +8,37 @@ body {
     overflow-x: hidden;
 }
 
+*:focus {
+    outline: 2px solid $red-main;
+    outline-offset: 2px;
+}
+
+button:focus-visible {
+    outline: 2px solid $red-main;
+    outline-offset: 2px;
+}
+
+a:focus-visible {
+    outline: 2px solid $red-main;
+    outline-offset: 2px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: $red-main;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+    
+    &:focus {
+        top: 6px;
+    }
+}
+
 h1 {
     @include h1;
 }

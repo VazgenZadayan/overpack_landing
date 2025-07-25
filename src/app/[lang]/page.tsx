@@ -14,11 +14,5 @@ export default async function IndexPage(props: {
 
   const dictionary = await getDictionary(lang as Locale);
   
-  return (
-    <html lang={lang}>
-    <body>
-        <MainPage dictionary={dictionary} />
-    </body>
-  </html>
-  );
+  return <MainPage dictionary={dictionary} />;
 }

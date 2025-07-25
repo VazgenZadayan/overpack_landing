@@ -5,30 +5,6 @@ import { i18n } from "./i18n-config";
 
 export function middleware(request: NextRequest) {
   const { nextUrl } = request;
-  const hostname = nextUrl.hostname;
-  const protocol = nextUrl.protocol;
-
-  const isLocalhost =
-    hostname === "localhost" ||
-    hostname === "127.0.0.1" ||
-    hostname === "[::1]";
-
-  if (protocol === "http:" && !isLocalhost) {
-    return NextResponse.redirect(
-      `https://${hostname}${nextUrl.pathname}${nextUrl.search}`,
-      308
-    );
-  }
-
-  console.log(hostname, 'hostname');
-
-  if (hostname.includes("www")) {
-    const newHost = hostname.replace(/^www\./, "");
-    return NextResponse.redirect(
-      `https://${newHost}${nextUrl.pathname}${nextUrl.search}`,
-      308
-    );
-  }
 
   const pathname = nextUrl.pathname;
   const allowedLocales = i18n.locales;

@@ -3,8 +3,9 @@ import { SVGProps } from "react"
 const GooglePlayBadge = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={180}
-    height={52}
+    width={300}
+    height={62}
+    viewBox="0 0 180 52"
     fill="none"
     {...props}
   >

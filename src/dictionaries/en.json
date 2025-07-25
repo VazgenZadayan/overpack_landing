@@ -33,7 +33,12 @@
       "Secure card payment",
       "Fast order processing",
       "Wide range of products"
-    ]
+    ],
+    "modal": {
+      "title": "Coming Soon!",
+      "message": "We're working hard to bring you the best hookah shopping experience. The app will be available very soon!",
+      "button": "I'll wait!"
+    }
   },
   "whyChoose": {
     "title": "Why choose Overpack?",

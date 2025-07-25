@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useEffect } from "react";
+import React, { useMemo, useRef, useEffect, useState } from "react";
 import styles from "./Hero.module.scss";
 import LogoWithText from "../../../public/LogoWithText.svg";
 import Link from "next/link";
@@ -10,6 +10,8 @@ import {
     FaCreditCard,
     FaBolt,
     FaBoxes,
+    FaTimes,
+    FaBell,
 } from "react-icons/fa";
 import gsap from "gsap";
 import Image from "next/image";
@@ -22,6 +24,8 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ dictionary }) => {
     const pathname = usePathname();
+    const [showModal, setShowModal] = useState(false);
+    const [modalType, setModalType] = useState<'google' | 'apple'>('google');
 
     // Рефы для анимации
     const titleRef = useRef<HTMLHeadingElement>(null);
@@ -30,6 +34,7 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
     const appStoreBtnRef = useRef<HTMLDivElement>(null);
     const headerRef = useRef<HTMLElement>(null);
     const featuresTrackRef = useRef<HTMLDivElement>(null);
+    const modalRef = useRef<HTMLDivElement>(null);
 
     const scrollToSection = (sectionId: string) => {
         const element = document.getElementById(sectionId);
@@ -43,6 +48,21 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
         if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             scrollToSection(sectionId);
+        }
+    };
+
+    const handleStoreClick = (type: 'google' | 'apple') => {
+        setModalType(type);
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
+
+    const handleModalKeyDown = (event: React.KeyboardEvent) => {
+        if (event.key === 'Escape') {
+            closeModal();
         }
     };
 
@@ -158,6 +178,26 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
         }
     }, []);
 
+    // Анимация модального окна
+    useEffect(() => {
+        if (showModal && modalRef.current) {
+            const modalButtons = modalRef.current.querySelectorAll(`.${styles["modal-button"]}`);
+            
+            gsap.fromTo(
+                modalButtons,
+                { y: 20, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    stagger: 0.1,
+                    delay: 0.3,
+                    ease: "power2.out",
+                }
+            );
+        }
+    }, [showModal]);
+
     return (
         <section className={styles["main-banner"]} id="main" role="banner" aria-label="Main banner">
             <header className={styles["hero-header"]} ref={headerRef}>
@@ -262,24 +302,22 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
             </p>
 
             <div className={styles["appstore-buttons"]} role="group" aria-label="Download app">
-                <a
-                    href="#"
+                <button
                     className={styles["store-badge"]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Download Overpack app from Google Play Store"
-                >
-                    <GooglePlayBadge />
-                </a>
-                <a
-                    href="#"
-                    className={styles["store-badge"]}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     aria-label="Download Overpack app from Apple App Store"
+                    onClick={() => handleStoreClick('apple')}
+                    onKeyDown={(e) => e.key === 'Enter' && handleStoreClick('apple')}
                 >
                     <AppStoreBadge />
-                </a>
+                </button>
+                <button
+                    className={styles["store-badge"]}
+                    aria-label="Download Overpack app from Google Play Store"
+                    onClick={() => handleStoreClick('google')}
+                    onKeyDown={(e) => e.key === 'Enter' && handleStoreClick('google')}
+                >
+                    <GooglePlayBadge />
+                </button>
             </div>
             <div className={styles["features"]} role="region" aria-label="Features">
                 <div
@@ -290,6 +328,26 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
                     {RenderFeatures}
                 </div>
             </div>
+
+                         {showModal && (
+                 <div className={styles["modal-overlay"]} onClick={closeModal} onKeyDown={handleModalKeyDown} role="dialog" aria-modal="true" aria-label="App release notification">
+                     <div className={styles["modal-content"]} ref={modalRef} onClick={(e) => e.stopPropagation()} onKeyDown={handleModalKeyDown}>
+                        <button className={styles["modal-close-btn"]} onClick={closeModal} onKeyDown={handleModalKeyDown} aria-label="Close notification">
+                            <FaTimes />
+                        </button>
+                        <div className={styles["modal-icon"]}>
+                            <FaBell />
+                        </div>
+                                                 <h2 className={styles["modal-title"]}>{dictionary.hero.modal.title}</h2>
+                        <p className={styles["modal-message"]}>{dictionary.hero.modal.message}</p>
+                                                 <div className={styles["modal-buttons"]}>
+                             <button className={styles["modal-button"]} onClick={closeModal} onKeyDown={handleModalKeyDown}>
+                                 {dictionary.hero.modal.button}
+                             </button>
+                         </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 };

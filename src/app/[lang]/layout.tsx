@@ -9,6 +9,7 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
   const dictionary = await getDictionary(params.lang);
   const lang = params.lang;
   return {
+    metadataBase: new URL(BASE_URL),
     title: dictionary.seo.title,
     description: dictionary.seo.description,
     keywords: dictionary.seo.keywords,

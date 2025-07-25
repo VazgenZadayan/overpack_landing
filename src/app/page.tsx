@@ -7,6 +7,7 @@ const BASE_URL = "https://overpack.am/";
 export async function generateMetadata() {
   const dictionary = await getDictionary("en");
   return {
+    metadataBase: new URL(BASE_URL),
     title: dictionary.seo.title,
     description: dictionary.seo.description,
     keywords: dictionary.seo.keywords,

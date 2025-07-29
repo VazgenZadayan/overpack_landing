@@ -22,18 +22,18 @@ export async function generateMetadata({ params }: { params: { lang: Locale } })
       type: 'website',
       images: [
         {
-          url: `${BASE_URL}/og-image.png`,
-          width: 1200,
-          height: 630,
+          url: `${BASE_URL}/og-image.jpg`,
+          width: 300,
+          height: 300,
           alt: dictionary.seo.title,
         },
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: 'summary',
       title: dictionary.seo.title,
       description: dictionary.seo.description,
-      images: [`${BASE_URL}/og-image.png`],
+      images: [`${BASE_URL}/og-image.jpg`],
     },
     alternates: {
       canonical: lang === "en" ? `${BASE_URL}/` : `${BASE_URL}/${lang}/`,

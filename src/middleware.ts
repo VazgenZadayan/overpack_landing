@@ -7,7 +7,7 @@ export function middleware(request: NextRequest) {
   const { nextUrl } = request;
 
   const pathname = nextUrl.pathname;
-  const allowedLocales = i18n.locales;
+  const allowedLocales = i18n.locales.filter(locale => locale !== "en");
   const isRoot = pathname === "/";
   const isAllowedLocale = allowedLocales.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)

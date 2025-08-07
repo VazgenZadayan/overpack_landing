@@ -20,9 +20,9 @@ export async function generateMetadata() {
       type: 'website',
       images: [
         {
-          url: `${BASE_URL}/og-image.jpg`,
-          width: 300,
-          height: 300,
+          url: `${BASE_URL}og-image.jpg`,
+          width: 1200,
+          height: 630,
           alt: dictionary.seo.title,
         },
       ],
@@ -31,14 +31,14 @@ export async function generateMetadata() {
       card: 'summary',
       title: dictionary.seo.title,
       description: dictionary.seo.description,
-      images: [`${BASE_URL}/og-image.jpg`],
+      images: [`${BASE_URL}og-image.jpg`],
     },
     alternates: {
       canonical: `${BASE_URL}`,
       languages: {
-        en: `${BASE_URL}/en/`,
-        hy: `${BASE_URL}/hy/`,
-        ru: `${BASE_URL}/ru/`,
+        en: `${BASE_URL}en/`,
+        hy: `${BASE_URL}hy/`,
+        ru: `${BASE_URL}ru/`,
       },
     },
     robots: {

@@ -14,6 +14,10 @@ export default function LanguageSwitcher() {
 
   const redirectedPathname = (locale: Locale) => {
     if (!pathname) return "/";
+        if (locale === "en") {
+      return "/";
+    }
+    
     const segments = pathname.split("/");
     segments[1] = locale;
     return segments.join("/");

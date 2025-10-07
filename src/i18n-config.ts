@@ -1,3 +1,4 @@
+// Конфигурация для next-intl
 export const i18n = {
   defaultLocale: "en",
   locales: ["en", "hy", "ru"],

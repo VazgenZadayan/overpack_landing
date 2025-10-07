@@ -1,26 +1,29 @@
-'use client';
 import Link from "next/link";
-import Image from "next/image";   
-import { getDictionary } from "../../get-dictionary";
-import type { Locale } from "../../i18n-config";
-import { usePathname } from 'next/navigation';
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 
-export default function NotFound() {
-
-  const pathname = usePathname();
-
-  const match = pathname.match(/^\/(en|ru|hy)(\/|$)/);
-  const locale = (match?.[1] || "en") as Locale;
-
-  const [dict, setDict] = useState<any>(null);
-
-  useEffect(() => {
-    getDictionary(locale).then(setDict);
-  }, [locale]);
-
-  if (!dict) {
-    return null;
+// Серверный компонент для языковой 404 страницы
+export default async function NotFound() {
+  // Попытаемся получить переводы
+  // Если не получится - используем английский как fallback
+  let t: Awaited<ReturnType<typeof getTranslations<"notFound">>>;
+  let locale = 'en';
+  
+  try {
+    t = await getTranslations('notFound');
+    // Пытаемся определить локаль из headers (установлена middleware)
+    const { cookies } = await import('next/headers');
+    const cookieStore = await cookies();
+    locale = cookieStore.get('NEXT_LOCALE')?.value || 'en';
+  } catch {
+    // Fallback: используем английский
+    const messages = (await import(`../../dictionaries/en.json`)).default;
+    const notFoundMessages = messages.notFound as any;
+    t = {
+      title: notFoundMessages.title,
+      description: notFoundMessages.description,
+      backToHome: notFoundMessages.backToHome,
+    } as any;
   }
 
   return (
@@ -63,7 +66,7 @@ export default function NotFound() {
           fontWeight: 700,
         }}
       >
-        {dict.notFound.title}
+        {t('title' as any)}
       </h2>
       <p
         style={{
@@ -74,10 +77,10 @@ export default function NotFound() {
           maxWidth: 400,
         }}
       >
-        {dict.notFound.description}
+        {t('description' as any)}
       </p>
       <Link
-        href={`/${locale}`}
+        href={`/${locale}/`}
         style={{
           display: "inline-block",
           background: "#222",
@@ -91,7 +94,7 @@ export default function NotFound() {
           transition: "background 0.2s",
         }}
       >
-        {dict.notFound.backToHome}
+        {t('backToHome' as any)}
       </Link>
     </div>
   );

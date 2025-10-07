@@ -2,12 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- English version -->
+  <!-- English version (default, without prefix) -->
   <url>
     <loc>https://overpack.am/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://overpack.am/"/>
     <xhtml:link rel="alternate" hreflang="hy" href="https://overpack.am/hy/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://overpack.am/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://overpack.am/"/>
   </url>
 
   <!-- Armenian version -->
@@ -16,6 +17,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://overpack.am/"/>
     <xhtml:link rel="alternate" hreflang="hy" href="https://overpack.am/hy/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://overpack.am/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://overpack.am/"/>
   </url>
 
   <!-- Russian version -->
@@ -24,6 +26,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://overpack.am/"/>
     <xhtml:link rel="alternate" hreflang="hy" href="https://overpack.am/hy/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://overpack.am/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://overpack.am/"/>
   </url>
 
 </urlset> 

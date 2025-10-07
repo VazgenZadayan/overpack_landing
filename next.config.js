@@ -1,3 +1,8 @@
+const withNextIntl = require('next-intl/plugin')(
+  // Путь к файлу конфигурации i18n
+  './src/i18n/request.ts'
+);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   sassOptions: {
@@ -43,4 +48,4 @@ const nextConfig = {
   trailingSlash: true,
 };
 
-module.exports = nextConfig;
+module.exports = withNextIntl(nextConfig);

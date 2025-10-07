@@ -1,18 +1,14 @@
 import MainPage from "@/components/MainPage";
-import { getDictionary } from "../../get-dictionary";
-import { Locale, i18n } from "../../i18n-config";
-import { notFound } from "next/navigation";
+import { getMessages } from "next-intl/server";
+import { Locale } from "../../i18n-config";
 
-export default async function IndexPage(props: {
-  params: { lang: string };
+export default async function IndexPage({
+  params,
+}: {
+  params: { lang: Locale };
 }) {
-  const { lang } = props.params;
-
-  if (!i18n.locales.includes(lang as Locale)) {
-    notFound();
-  }
-
-  const dictionary = await getDictionary(lang as Locale);
+  // Получаем все переводы для текущего языка
+  const messages = await getMessages({ locale: params.lang });
   
-  return <MainPage dictionary={dictionary} />;
+  return <MainPage dictionary={messages} />;
 }

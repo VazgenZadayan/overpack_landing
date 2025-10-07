@@ -1,30 +1,23 @@
-// middleware.ts
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { i18n } from "./i18n-config";
+import createMiddleware from 'next-intl/middleware';
+import { i18n } from './i18n-config';
 
-export function middleware(request: NextRequest) {
-  const { nextUrl } = request;
-
-  const pathname = nextUrl.pathname;
-  const allowedLocales = i18n.locales.filter(locale => locale !== "en");
-  const isRoot = pathname === "/";
-  const isAllowedLocale = allowedLocales.some(
-    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
-  );
-
-  if (isRoot || isAllowedLocale) {
-    return NextResponse.next();
-  }
-
-  const isLangPath = /^\/[a-zA-Z]{2}(\/|$)/.test(pathname);
-  if (isLangPath) {
-    return NextResponse.rewrite(new URL("/not-found", request.url));
-  }
-
-  return NextResponse.next();
-}
+// Создаем middleware с next-intl
+export default createMiddleware({
+  // Список всех поддерживаемых языков
+  locales: i18n.locales,
+  
+  // Язык по умолчанию
+  defaultLocale: i18n.defaultLocale,
+  
+  // Стратегия префиксов:
+  // 'as-needed' - скрывать префикс для defaultLocale (/ для en, /hy/ и /ru/ с префиксами)
+  localePrefix: 'as-needed',
+  
+  // Определение языка из Accept-Language заголовка
+  localeDetection: true
+});
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  // Применяем middleware ко всем путям кроме api, статики и файлов
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
 };

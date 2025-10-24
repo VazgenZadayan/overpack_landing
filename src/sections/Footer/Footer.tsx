@@ -4,6 +4,7 @@ import styles from "./Footer.module.scss";
 import { MdEmail, MdPhone } from "react-icons/md";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "../../i18n/navigation";
 
 interface FooterProps {
     dictionary: any;
@@ -158,6 +159,15 @@ const Footer: React.FC<FooterProps> = ({ dictionary }) => {
                 <div className={styles.subFooter}>
                     <div className={styles.footer__copyright}>
                         {dictionary.footer.copyright}
+                    </div>
+                    <div className={styles.footer__links}>
+                        <Link href="/privacy-policy" className={styles.footer__link}>
+                            {dictionary.footer.privacyPolicy}
+                        </Link>
+                        <span className={styles.footer__separator}>•</span>
+                        <Link href="/terms-of-use" className={styles.footer__link}>
+                            {dictionary.footer.termsOfUse}
+                        </Link>
                     </div>
                     <div className={styles.footer__developed}>
   {dictionary.footer.developed}

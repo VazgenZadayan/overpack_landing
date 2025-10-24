@@ -37,7 +37,14 @@
     "modal": {
       "title": "Coming Soon!",
       "message": "We're working hard to bring you the best hookah shopping experience. The app will be available very soon!",
-      "button": "I'll wait!"
+      "placeholder": "Enter your email or phone number",
+      "submit": "Notify me",
+      "submitting": "Submitting...",
+      "success": "Thank you! We'll notify you when the app is released.",
+      "error": "Please enter your contact information",
+      "apiErrorTitle": "Something went wrong",
+      "apiErrorMessage": "Please contact us directly for notifications about the app release.",
+      "callButton": "Call us"
     }
   },
   "whyChoose": {
@@ -99,7 +106,9 @@
     "contacts": {
       "phone": "+374 41 919694",
       "email": "overpackhookahmarket@gmail.com"
-    }
+    },
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use"
   },
   "seo": {
     "title": "Overpack | Hookah Market",

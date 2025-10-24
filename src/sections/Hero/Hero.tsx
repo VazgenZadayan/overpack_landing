@@ -17,6 +17,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import GooglePlayBadge from "@/components/GooglePlayBadge";
 import AppStoreBadge from "@/components/AppStoreBadge";
+import config from "@/config/env";
 
 interface HeroProps {
     dictionary: any;
@@ -26,8 +27,11 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
     const pathname = usePathname();
     const [showModal, setShowModal] = useState(false);
     const [modalType, setModalType] = useState<'google' | 'apple'>('google');
+    const [email, setEmail] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [showApiError, setShowApiError] = useState(false);
 
-    // Рефы для анимации
     const titleRef = useRef<HTMLHeadingElement>(null);
     const subtitleRefs = useRef<(HTMLSpanElement | null)[]>([]);
     const googlePlayBtnRef = useRef<HTMLDivElement>(null);
@@ -58,6 +62,58 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
 
     const closeModal = () => {
         setShowModal(false);
+        setEmail('');
+        setSubmitStatus('idle');
+        setIsSubmitting(false);
+        setShowApiError(false);
+    };
+
+    const handleEmailSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        if (!email.trim()) {
+            setSubmitStatus('error');
+            return;
+        }
+
+        setIsSubmitting(true);
+        
+        try {
+            const response = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    contact: email.trim()
+                }),
+            });
+
+            if (response.ok) {
+                setSubmitStatus('success');
+                
+                setTimeout(() => {
+                    closeModal();
+                }, 2000);
+            } else {
+                closeModal();
+                setShowApiError(true);
+                
+                setTimeout(() => {
+                    setShowApiError(false);
+                }, 5000);
+            }
+            
+        } catch (error) {
+            closeModal();
+            setShowApiError(true);
+            
+            setTimeout(() => {
+                setShowApiError(false);
+            }, 5000);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleModalKeyDown = (event: React.KeyboardEvent) => {
@@ -338,13 +394,72 @@ const Hero: React.FC<HeroProps> = ({ dictionary }) => {
                         <div className={styles["modal-icon"]}>
                             <FaBell />
                         </div>
-                                                 <h2 className={styles["modal-title"]}>{dictionary.hero.modal.title}</h2>
+                        <h2 className={styles["modal-title"]}>{dictionary.hero.modal.title}</h2>
                         <p className={styles["modal-message"]}>{dictionary.hero.modal.message}</p>
-                                                 <div className={styles["modal-buttons"]}>
-                             <button className={styles["modal-button"]} onClick={closeModal} onKeyDown={handleModalKeyDown}>
-                                 {dictionary.hero.modal.button}
-                             </button>
-                         </div>
+                        
+                        {submitStatus === 'success' ? (
+                            <div className={styles["modal-success"]}>
+                                <p className={styles["modal-success-text"]}>{dictionary.hero.modal.success || "Thank you! We'll notify you when the app is released."}</p>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleEmailSubmit} className={styles["modal-form"]}>
+                                <div className={styles["modal-input-group"]}>
+                                    <input
+                                        type="text"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder={dictionary.hero.modal.placeholder || "Enter your email or phone number"}
+                                        className={`${styles["modal-input"]} ${submitStatus === 'error' ? styles["modal-input--error"] : ''}`}
+                                        disabled={isSubmitting}
+                                        aria-label="Email or phone number"
+                                    />
+                                    {submitStatus === 'error' && (
+                                        <p className={styles["modal-error"]}>
+                                            {dictionary.hero.modal.error || "Please enter a valid email or phone number"}
+                                        </p>
+                                    )}
+                                </div>
+                                <div className={styles["modal-buttons"]}>
+                                    <button 
+                                        type="submit" 
+                                        className={styles["modal-button"]} 
+                                        disabled={isSubmitting || !email.trim()}
+                                        onKeyDown={handleModalKeyDown}
+                                    >
+                                        {isSubmitting ? (dictionary.hero.modal.submitting || "Submitting...") : (dictionary.hero.modal.submit || "Notify me")}
+                                    </button>
+                                </div>
+                            </form>
+                         )}
+                    </div>
+                </div>
+            )}
+
+            {showApiError && (
+                <div className={styles["api-error-overlay"]} onClick={() => setShowApiError(false)}>
+                    <div className={styles["api-error-content"]} onClick={(e) => e.stopPropagation()}>
+                        <button 
+                            className={styles["api-error-close"]} 
+                            onClick={() => setShowApiError(false)}
+                            aria-label="Close error message"
+                        >
+                            <FaTimes />
+                        </button>
+                        <div className={styles["api-error-icon"]}>
+                            <FaBell />
+                        </div>
+                        <h3 className={styles["api-error-title"]}>
+                            {dictionary.hero.modal.apiErrorTitle || "Something went wrong"}
+                        </h3>
+                        <p className={styles["api-error-message"]}>
+                            {dictionary.hero.modal.apiErrorMessage || "Please contact us directly for notifications about the app release."}
+                        </p>
+                        <a 
+                            href={`tel:${config.CONTACT_PHONE}`} 
+                            className={styles["api-error-call-button"]}
+                        >
+                            {dictionary.hero.modal.callButton || "Call us"}
+                        </a>
                     </div>
                 </div>
             )}

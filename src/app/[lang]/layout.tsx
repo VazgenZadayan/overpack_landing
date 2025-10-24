@@ -106,7 +106,6 @@ export default async function LocaleLayout({
           ></iframe>
         </noscript>
         
-        {/* Оборачиваем в NextIntlClientProvider для доступа к переводам */}
         <NextIntlClientProvider locale={params.lang} messages={messages}>
           <StructuredData lang={params.lang} dictionary={messages} />
           {children}

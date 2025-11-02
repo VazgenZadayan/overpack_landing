@@ -83,6 +83,7 @@ export default async function LocaleLayout({
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#ffffff" />
+        <meta name="yandex-verification" content="e268b63541a3199e" />
         
         {/* Google Tag Manager */}
         <Script id="gtm-script" strategy="afterInteractive">
